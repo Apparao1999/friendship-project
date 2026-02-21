@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Haritha Birthday</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:url("bg.jpg") center/cover no-repeat;
+  color:white;
+  text-align:center;
+}
+
+.screen{
+  display:none;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.active{display:flex;}
+
+button{
+  padding:10px 20px;
+  margin:10px;
+  font-size:18px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.yes{background:#4CAF50;color:white;}
+.no{background:#f44336;color:white;}
+.next{background:#2196F3;color:white;}
+
+input{
+  padding:10px;
+  width:60%;
+  margin-top:10px;
+}
+
+.gift img{
+  width:200px;
+  margin:10px;
+  cursor:pointer;
+  border:4px solid transparent;
+}
+
+.selected{
+  border:4px solid yellow;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div id="menu" class="screen active">
+  <h1>🎂 For Haritha 💙</h1>
+  <button onclick="start()">Start Questions</button>
+</div>
+
+<!-- QUESTIONS -->
+<div id="quiz" class="screen">
+  <h2 id="qtext"></h2>
+
+  <div id="yesno">
+    <button class="yes" onclick="answer()">YES</button>
+    <button class="no" onclick="answer()">NO</button>
+  </div>
+
+  <input id="reason" placeholder="Why did you choose this?" style="display:none">
+  <button class="next" onclick="nextQ()" id="nextBtn" style="display:none">Next</button>
+</div>
+
+<!-- GIFT -->
+<div id="gift" class="screen">
+  <h2>Which gift do you want? 🎁</h2>
+  <div class="gift">
+    <img src="chocolate.jpg" onclick="selectGift(this,'chocolate.jpg')">
+    <img src="watch.jpg" onclick="selectGift(this,'watch.jpg')">
+    <img src="frame.jpg" onclick="selectGift(this,'frame.jpg')">
+    <img src="surprise.jpg" onclick="selectGift(this,'surprise.jpg')">
+  </div>
+  <button class="next" onclick="showFinal()">Finish</button>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="screen">
+  <h2>No matter what happens… will you stay my best friend forever? 💙</h2>
+  <button class="yes" onclick="showGift()">YES ❤️</button>
+  <div id="giftResult"></div>
+</div>
+
+<script>
+let questions=[
+"Why am I your best friend?",
+"One thing you never want to lose in our friendship?",
+"If we fight, who will say sorry first?",
+"What is your favorite memory with me?",
+"How important am I in your life?",
+"In tough times, did I support you well?",
+"When did you feel I was a true friend?",
+"Who gets angry fast?",
+"Eppudaina anipinchinda naa friendship waste ani?"
+];
+
+let index=0;
+let chosenGift="";
+
+function start(){
+  show("quiz");
+  loadQ();
+}
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function loadQ(){
+  document.getElementById("qtext").innerText=questions[index];
+  document.getElementById("reason").style.display="none";
+  document.getElementById("nextBtn").style.display="none";
+}
+
+function answer(){
+  document.getElementById("reason").style.display="block";
+  document.getElementById("nextBtn").style.display="inline-block";
+}
+
+function nextQ(){
+  index++;
+  if(index<questions.length){
+    loadQ();
+  }else{
+    show("gift");
+  }
+}
+
+function selectGift(el,src){
+  document.querySelectorAll(".gift img").forEach(i=>i.classList.remove("selected"));
+  el.classList.add("selected");
+  chosenGift=src;
+}
+
+function showFinal(){
+  if(chosenGift==""){
+    alert("Select one gift!");
+    return;
+  }
+  show("final");
+}
+
+function showGift(){
+  document.getElementById("giftResult").innerHTML=
+  "<h2>Your Gift 🎁</h2><img src='"+chosenGift+"' width='250'>";
+}
+</script>
+<h1>hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</h1>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Friendship</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🔐 MAIN PASSWORD SCREEN -->
+<div id="loginScreen" class="center">
+  <h2>Enter Password 💙</h2>
+  <input type="password" id="mainPass" class="form-control w-50 m-auto">
+  <button class="btn btn-primary mt-3" onclick="checkMain()">Enter</button>
+  <p id="error" class="text-danger mt-2"></p>
+</div>
+
+<!-- 🌐 MAIN SITE -->
+<div id="site" style="display:none;">
+
+<nav class="navbar bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand text-white">Our Memories</span>
+    <button class="btn btn-light" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<div id="menu" class="menu">
+  <a onclick="openPage('first','music/first.mp3')">First Day</a>
+  <a onclick="openProtected('bindu','111')">Bindu Bro 🔒</a>
+  <a onclick="openProtected('appu','222')">Appu 🔒</a>
+  <a onclick="openProtected('reddy','333')">Reddy Bro 🔒</a>
+  <a onclick="openPage('trips','music/trips.mp3')">Trips</a>
+  <a onclick="openPage('videos','music/video.mp3')">Snap Videos</a>
+</div>
+
+<div class="container mt-4">
+
+  <!-- FIRST DAY -->
+  <div id="first" class="page">
+    <h2>First Day</h2>
+    <img src="images/p1.jpg" class="gallery"
+     onclick="openModal('images/p1.jpg','First day memory')">
+  </div>
+
+  <!-- BINDU -->
+  <div id="bindu" class="page">
+    <h2>Bindu Section</h2>
+    <img src="images/b1.jpg" class="gallery"
+     onclick="openModal('images/b1.jpg','Bindu memory')">
+  </div>
+
+  <!-- TRIPS -->
+  <div id="trips" class="page">
+    <h2>Trips</h2>
+    <img src="images/t1.jpg" class="gallery"
+     onclick="openModal('images/t1.jpg','Trip memory')">
+  </div>
+
+  <!-- VIDEOS -->
+  <div id="videos" class="page">
+    <h2>Snap Videos</h2>
+    <video width="300" controls>
+      <source src="videos/v1.mp4">
+    </video>
+  </div>
+
+</div>
+
+<!-- 🖼️ MODAL -->
+<div id="modal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img id="modalImg">
+  <p id="modalText"></p>
+</div>
+
+<!-- 📝 REVIEW -->
+<div class="reviewBox">
+  <textarea id="review" placeholder="Write memory"></textarea>
+  <button onclick="sendReview()">Send</button>
+</div>
+
+<audio id="player"></audio>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

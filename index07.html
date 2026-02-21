@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reddy Bro Birthday</title>
+
+<style>
+.response-icon{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  width:45px;
+  height:45px;
+  background:black;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+}
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(to bottom,#fdfbfb,#ebedee);
+  text-align:center;
+  color:#333;
+}
+
+.hidden{display:none;}
+
+.container{padding:25px 15px;}
+
+h2{margin-top:20px;}
+
+input{
+  padding:12px;
+  width:85%;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button{
+  padding:12px 18px;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{opacity:0.85;}
+
+.back-btn{background:#555;}
+
+.card{
+  background:white;
+  width:92%;
+  margin:20px auto;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  animation:fadeIn 0.8s ease;
+}
+
+.circle-img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:15px;
+  border:4px solid #ff4d6d;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.menu-title{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+/* Response icon */
+.response-icon{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  width:45px;
+  height:45px;
+  background:black;
+  color:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="container">
+  <p>Reddy bro… small surprise open chey 😄</p>
+  <input type="password" id="password" placeholder="Enter password">
+  <br><br>
+  <button onclick="checkPassword()">Open</button>
+</div>
+<!-- MENU -->
+<div id="menu" class="container hidden">
+  <div class="menu-title">Welcome Reddy Bro 😎</div>
+
+  <button onclick="openStory()">Our Friendship Story</button>
+  <button onclick="toggleMonkeys()">3 Monkeys 🐒</button>
+  <button onclick="openQuestions()">Questions</button>
+
+  <div id="monkeyOptions" class="hidden">
+  <button onclick="openReddyPassword()">Reddy</button>
+
+  <button onclick="singleBindu()" ondblclick="openBindu()">Bindu</button>
+
+  <button onclick="openMe()">Me</button>
+</div>
+</div>
+
+<!-- REDDY PASSWORD PAGE -->
+<div id="reddyPasswordPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <input type="password" id="reddyPass"
+     placeholder="Enter ur mbl password"
+     style="color:#888;">
+    <br><br>
+    <button onclick="checkReddyPassword()">Open</button>
+  </div>
+</div>
+<!-- STORY PAGE -->
+<div id="storyPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <img src="photo1.jpg" class="circle-img">
+    <p>Mana memories start ikkade 😄</p>
+  </div>
+</div>
+
+<!-- REDDY PAGE -->
+<div id="reddyPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <p>Reddy bro special page 🔥</p>
+  </div>
+</div>
+
+<!-- BINDU PAGE -->
+<div id="binduPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <p>Bindu special page 💛</p>
+  </div>
+</div>
+<!-- ME PAGE -->
+<div id="mePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <p>This is Me section 🙋‍♂️</p>
+  </div>
+</div>
+
+<!-- RESPONSE PAGE -->
+<div id="responsePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <p>All responses display here later 🔥</p>
+  </div>
+</div>
+
+<!-- RESPONSE ICON -->
+<div class="response-icon" onclick="openResponsePassword()">R</div>
+<!-- RESPONSE PAGE -->
+<div id="responsePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <p>All responses will appear here 🔥</p>
+  </div>
+</div>
+<script>
+function openReddyPassword(){
+  hideAll();
+  document.getElementById("reddyPasswordPage").classList.remove("hidden");
+}
+
+function checkReddyPassword(){
+  if(document.getElementById("reddyPass").value === "575757"){
+    hideAll();
+    document.getElementById("reddyPage").classList.remove("hidden");
+  } else {
+    alert("Wrong password");
+  }
+}
+
+function singleBindu(){
+  alert("Bindu page coming soon 😄");
+}
+
+function openBindu(){
+  hideAll();
+  document.getElementById("binduPage").classList.remove("hidden");
+}
+
+function openMe(){
+  hideAll();
+  document.getElementById("mePage").classList.remove("hidden");
+}
+
+function openResponsePassword(){
+  let pass = prompt("Enter Response Password");
+  if(pass === "1111"){
+    hideAll();
+    document.getElementById("responsePage").classList.remove("hidden");
+  } else {
+    alert("Wrong Password");
+  }
+}
+function checkPassword(){
+  if(document.getElementById("password").value==="reddy123"){
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("menu").classList.remove("hidden");
+  } else { alert("Wrong password 😄"); }
+}
+
+function toggleMonkeys(){
+  document.getElementById("monkeyOptions").classList.toggle("hidden");
+}
+
+function openStory(){hideAll();document.getElementById("storyPage").classList.remove("hidden");}
+
+function openReddyPassword(){hideAll();document.getElementById("reddyPasswordPage").classList.remove("hidden");}
+
+function checkReddyPassword(){
+  if(document.getElementById("reddyPass").value==="575757"){
+    hideAll();
+    document.getElementById("reddyPage").classList.remove("hidden");
+  }else{alert("Wrong Password");}
+}
+
+function singleBindu(){alert("Bindu page coming soon 😄");}
+
+function openBindu(){hideAll();document.getElementById("binduPage").classList.remove("hidden");}
+
+function openMe(){hideAll();document.getElementById("mePage").classList.remove("hidden");}
+
+function openQuestions(){hideAll();document.getElementById("questionsPage").classList.remove("hidden");}
+
+function showGift(){hideAll();document.getElementById("giftPage").classList.remove("hidden");}
+
+function openResponsePassword(){
+  let pass=prompt("Enter Response Password");
+  if(pass==="1111"){
+    hideAll();
+    document.getElementById("responsePage").classList.remove("hidden");
+  }else{alert("Wrong Password");}
+}
+
+function goBack(){hideAll();document.getElementById("menu").classList.remove("hidden");}
+
+function hideAll(){
+  document.querySelectorAll(".container").forEach(el=>el.classList.add("hidden"));
+}
+</script>
+<div class="response-icon" onclick="openResponsePassword()">R</div>
+</body>
+</html>
