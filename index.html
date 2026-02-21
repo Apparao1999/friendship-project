@@ -2,55 +2,108 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Friendship Memory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reddy Bro Birthday</title>
 
 <style>
+*{box-sizing:border-box;}
+
 body{
-  font-family: Arial;
-  background:white;
-  color:black;
-  text-align:center;
   margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(to bottom,#fdfbfb,#ebedee);
+  text-align:center;
 }
 
-#mainContent{ display:none; }
-
-.menu{
-  display:none;
-  background:#eee;
-  padding:20px;
-}
-
-.menu button{
-  display:block;
-  width:220px;
-  margin:10px auto;
-  padding:10px;
-  font-size:16px;
-}
-
-.section{
-  display:none;
-  padding:30px;
-}
-
-img{
-  width:200px;
-  margin:10px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.hamburger{
-  font-size:30px;
-  cursor:pointer;
-  margin:20px;
-}
+.hidden{display:none;}
+.container{padding:25px 15px;}
 
 input{
-  padding:10px;
-  width:60%;
+  padding:12px;
+  width:85%;
+  border-radius:10px;
+  border:1px solid #ccc;
   font-size:16px;
+}
+
+button{
+  padding:12px 18px;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.back-btn{background:#555;}
+
+.card{
+  background:white;
+  width:92%;
+  margin:20px auto;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Monkey circle layout */
+.monkey-wrapper{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:20px;
+}
+
+.monkey-circle{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid #ff4d6d;
+  cursor:pointer;
+}
+
+.monkey-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Story left-right */
+.story-row{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+  text-align:left;
+}
+
+.story-row img{
+  width:110px;
+  height:110px;
+  border-radius:15px;
+  object-fit:cover;
+}
+
+.story-row p{flex:1;}
+
+/* Response icon */
+.response-icon{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  width:45px;
+  height:45px;
+  background:black;
+  color:white;
+  border-radius:50%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -58,212 +111,248 @@ input{
 <body>
 
 <!-- LOGIN -->
-<div id="login">
-  <h2>Enter Password</h2>
-  <input type="password" id="mainPass">
+<div id="login" class="container">
+  <h2>Reddy bro… surprise open chey 😄</h2>
+  <input type="password" id="password" placeholder="Enter ur roll number">
   <br><br>
-  <button onclick="checkMain()">Enter</button>
+  <button onclick="checkPassword()">Open</button>
 </div>
 
-<!-- MAIN -->
-<div id="mainContent">
+<!-- MENU -->
+<div id="menu" class="container hidden">
+  <h2>Welcome Reddy Bro 😎</h2>
+  <button onclick="openStory()">Our Friendship Story</button>
+  <button onclick="toggleMonkeys()">3 monkeys🐒🐵🙈 🫶</button>
+  <button onclick="openQuestions()">Questions</button>
 
-<div class="hamburger" onclick="toggleMenu()">☰ Menu</div>
+  <div id="monkeyOptions" class="hidden">
+    <div class="monkey-wrapper">
+      <div class="monkey-circle" onclick="openReddyPassword()">
+        <img src="images\reddy\1.jpg">
 
-<div class="menu" id="menu">
-  <button onclick="openSection('first')">First Day</button>
-  <button onclick="openSection('monkeys')">3 Monkeys</button>
-  <button onclick="openProtected('bindu','111')">Bindu</button>
-  <button onclick="openProtected('appu','222')">Appu</button>
-  <button onclick="openProtected('reddy','333')">Reddy</button>
-  <button onclick="openSection('trips')">Trips</button>
-  <button onclick="openSection('videos')">Videos</button>
-  <button onclick="openSection('questions')">Questions</button>
-  <button onclick="openResponses()">Responses 🔒</button>
+      </div>
+      <div class="monkey-circle" onclick="openBindu()">
+
+        <img src="images\bindu\01.jpg">
+
+
+       </div>
+      <div class="monkey-circle" onclick="openMe()">
+       <img src="images\me\1.jpg">
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- NORMAL SECTIONS -->
-<div id="first" class="section"><h2>First Day</h2></div>
-<div id="monkeys" class="section"><h2>3 Monkeys</h2></div>
-<div id="bindu" class="section"><h2>Bindu</h2></div>
-<div id="appu" class="section"><h2>Appu</h2></div>
-<div id="reddy" class="section"><h2>Reddy</h2></div>
-<div id="trips" class="section"><h2>Trips</h2></div>
-<div id="videos" class="section"><h2>Videos</h2></div>
+<!-- REDDY PASSWORD -->
+<div id="reddyPasswordPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅</button>
+  <div class="card">
+    <input type="password" id="reddyPass" placeholder="Mbl password enter chey bro">
+    <br><br>
+    <button onclick="checkReddyPassword()">Open</button>
+  </div>
+</div>
+
+<!-- STORY PAGE -->
+<div id="reddyPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+
+  <div class="story-row">
+    <img src="r2.jpg">
+    <p>Class lo fun moments 🔥</p>
+  </div>
+
+  <div class="story-row">
+    <img src="r3.jpg">
+    <p>Life long bond ra bro 🤝</p>
+  </div>
+<div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+<div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+<div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+<div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+<div class="story-row">
+    <img src="images\jathi ratnalu\33.jpg">
+    <p>Mana first meet memories 😄</p>
+  </div>
+
+</div>
+
+<!-- BINDU -->
+<div id="binduPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <p>Bindu special page 💛</p>
+  </div>
+</div>
+
+<!-- ME -->
+<div id="mePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <p>This is Me section 🙋‍♂️</p>
+  </div>
+</div>
 
 <!-- QUESTIONS -->
-<div id="questions" class="section">
-
-<h2 id="qText"></h2>
-
-<input id="ansInput" placeholder="Type your answer">
-<br><br>
-<button onclick="nextQ()">Next</button>
-
-<div id="giftArea" style="display:none;">
-  <h2>Select gift 🎁</h2>
-  <img src="chocolate.jpg" onclick="selectGift('Chocolate')">
-  <img src="watch.jpg" onclick="selectGift('Watch')">
-  <img src="frame.jpg" onclick="selectGift('Photo Frame')">
-  <img src="surprise.jpg" onclick="selectGift('Surprise Box')">
+<div id="questionsPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <h3 id="questionTitle"></h3>
+    <p id="questionText"></p>
+    <input type="text" id="answerInput" placeholder="Type your answer...">
+    <br><br>
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <button id="surpriseBtn" class="hidden" onclick="showGift()">🎁 Surprise Gift</button>
+  </div>
 </div>
 
-<div id="finalMsg" style="display:none;">
-  <h2>Thank you ❤️</h2>
+<!-- GIFT -->
+<div id="giftPage" class="container hidden">
+  <h2>🎁 Final Surprise</h2>
+  <div class="card">
+    <p>Happy Birthday Reddy Bro 🎂🔥</p>
+  </div>
+  <button onclick="goBack()">Back</button>
 </div>
 
+<!-- RESPONSE PAGE -->
+<div id="responsePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <h3>All Answers 🔥</h3>
+    <div id="answersList"></div>
+  </div>
 </div>
 
-<!-- RESPONSES -->
-<div id="responses" class="section">
-  <h2>All Responses</h2>
-  <div id="respData"></div>
-  <br>
-  <button onclick="clearData()">Clear Old Data</button>
-</div>
-
-</div>
+<div class="response-icon" id="responseIcon" onclick="openResponsePassword()">R</div>
 
 <script>
 
 // LOGIN
-function checkMain(){
-  let p=document.getElementById("mainPass").value;
-  if(p==="friend123"){
-    document.getElementById("login").style.display="none";
-    document.getElementById("mainContent").style.display="block";
-  }else alert("Wrong password");
+function checkPassword(){
+  if(document.getElementById("password").value==="111"){
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("menu").classList.remove("hidden");
+    document.getElementById("responseIcon").style.display="flex";
+  } else alert("Wrong password");
 }
 
-// MENU
-function toggleMenu(){
-  let m=document.getElementById("menu");
-  m.style.display = (m.style.display==="block") ? "none":"block";
+function toggleMonkeys(){
+  document.getElementById("monkeyOptions").classList.toggle("hidden");
 }
 
-// OPEN SECTION
-function openSection(id){
-  hideAll();
-  document.getElementById(id).style.display="block";
-  document.getElementById("menu").style.display="none";
+function openStory(){hideAll();document.getElementById("reddyPage").classList.remove("hidden");}
+function openReddyPassword(){hideAll();document.getElementById("reddyPasswordPage").classList.remove("hidden");}
 
-  if(id==="questions"){
-    startQuestions();
-  }
+function checkReddyPassword(){
+  if(document.getElementById("reddyPass").value==="575757"){
+    hideAll();
+    document.getElementById("reddyPage").classList.remove("hidden");
+  } else alert("Wrong Password");
 }
-
-// PROTECTED
-function openProtected(id,pass){
-  let p=prompt("Enter password");
-  if(p===pass){
-    openSection(id);
-  }else alert("Wrong password");
+function openBindu(){alert("Bindu page coming soon 😄");}
+function openBindu(){
+  alert("Bindu page coming soon 😄");
 }
+function openBindu(){hideAll();document.getElementById("binduPage").classList.remove("hidden");}
+function openMe(){hideAll();document.getElementById("mePage").classList.remove("hidden");}
 
-// HIDE ALL
 function hideAll(){
-  let s=document.getElementsByClassName("section");
-  for(let i=0;i<s.length;i++) s[i].style.display="none";
+  document.querySelectorAll(".container").forEach(el=>el.classList.add("hidden"));
 }
 
-// QUESTIONS DATA
-let questionsList=[
-"Why am I your best friend?",
-"One thing you never want to lose in our friendship?",
-"If we fight, who will say sorry first?",
-"What is your favorite memory with me?",
-"How important am I in your life?",
-"In tough times, did I support you well?",
-"When did you feel I was a true friend?",
-"Who gets angry fast?",
-"Eppudaina anipinchinda naa friendship waste ani?"
+// QUESTIONS LOGIC
+let questions=[
+"Mana first meet ekkada?",
+"First fight reason?",
+"Who talks more?",
+"Who says sorry first?",
+"Mana fav place?",
+"Who is emotional?",
+"Who is over thinker?",
+"Who is lazy?",
+"Friendship life long kadha?",
+"Birthday treat eppudu?"
 ];
 
-let qIndex=0;
+let currentQuestion=0;
 let answers=[];
 
-function startQuestions(){
-  qIndex=0;
+function openQuestions(){
+  hideAll();
+  document.getElementById("questionsPage").classList.remove("hidden");
+  currentQuestion=0;
   answers=[];
-  document.getElementById("giftArea").style.display="none";
-  document.getElementById("finalMsg").style.display="none";
-  document.getElementById("ansInput").style.display="inline-block";
-  loadQuestion();
+  document.getElementById("nextBtn").classList.remove("hidden");
+  document.getElementById("surpriseBtn").classList.add("hidden");
+  document.getElementById("answerInput").classList.remove("hidden");
+  showQuestion();
 }
 
-function loadQuestion(){
-  if(qIndex < questionsList.length){
-    document.getElementById("qText").innerText=questionsList[qIndex];
-    document.getElementById("ansInput").value="";
+function showQuestion(){
+  document.getElementById("questionTitle").innerText="Question "+(currentQuestion+1);
+  document.getElementById("questionText").innerText=questions[currentQuestion];
+  document.getElementById("answerInput").value="";
+}
+
+function nextQuestion(){
+  answers.push(document.getElementById("answerInput").value);
+  currentQuestion++;
+
+  if(currentQuestion<questions.length){
+    showQuestion();
   }else{
-    document.getElementById("qText").innerText="Choose a gift";
-    document.getElementById("ansInput").style.display="none";
-    document.getElementById("giftArea").style.display="block";
+    document.getElementById("questionTitle").innerText="All Done 😄";
+    document.getElementById("questionText").innerText="Ready for your surprise?";
+    document.getElementById("answerInput").classList.add("hidden");
+    document.getElementById("nextBtn").classList.add("hidden");
+    document.getElementById("surpriseBtn").classList.remove("hidden");
   }
 }
 
-function nextQ(){
-  let ans=document.getElementById("ansInput").value;
-  if(ans===""){ alert("Type answer"); return; }
-
-  answers.push(questionsList[qIndex]+" : "+ans);
-  qIndex++;
-  loadQuestion();
+function showGift(){
+  hideAll();
+  document.getElementById("giftPage").classList.remove("hidden");
 }
 
-function selectGift(g){
-
-  // store answers
-  answers.push("Selected Gift : "+g);
-  localStorage.setItem("friendResponses", JSON.stringify(answers));
-
-  // hide question UI completely
-  document.getElementById("qText").style.display="none";
-  document.getElementById("ansInput").style.display="none";
-  document.querySelector("#questions button").style.display="none";
-  document.getElementById("giftArea").style.display="none";
-
-  // show only gift
-  document.getElementById("finalMsg").style.display="block";
-  document.getElementById("finalMsg").innerHTML =
-  "<h2>This is your gift 🎁</h2><h1>"+g+"</h1>";
-
-  // after 4 sec → clear screen but KEEP menu only
-  setTimeout(()=>{
-    hideAll();                 // hide sections
-    document.getElementById("finalMsg").style.display="none";
-    // menu stays hidden until user clicks ☰
-    window.scrollTo(0,0);
-  },4000);
+function openResponsePassword(){
+  let pass=prompt("Enter Response Password");
+  if(pass==="1111"){
+    hideAll();
+    document.getElementById("responsePage").classList.remove("hidden");
+    let list=document.getElementById("answersList");
+    list.innerHTML="";
+    if(answers.length===0){
+      list.innerHTML="<p>No answers submitted yet 😄</p>";
+    }else{
+      for(let i=0;i<answers.length;i++){
+        list.innerHTML+="<p><b>Q"+(i+1)+":</b> "+answers[i]+"</p>";
+      }
+    }
+  }else alert("Wrong Password");
 }
 
-// RESPONSES
-function openResponses(){
-  let p=prompt("Enter password");
-  if(p!=="999"){ alert("Wrong password"); return; }
-
-  openSection("responses");
-
-  let data=localStorage.getItem("friendResponses");
-  if(!data){
-    respData.innerHTML="No responses yet";
-    return;
-  }
-
-  let arr=JSON.parse(data);
-  let html="";
-  arr.forEach(a=>{
-    html+="<p>"+a+"</p>";
-  });
-
-  respData.innerHTML=html;
-}
-
-// CLEAR
-function clearData(){
-  localStorage.removeItem("friendResponses");
-  respData.innerHTML="";
-  alert("Old data cleared");
+function goBack(){
+  hideAll();
+  document.getElementById("menu").classList.remove("hidden");
 }
 
 </script>
