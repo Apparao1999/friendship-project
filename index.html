@@ -105,25 +105,6 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-@keyframes pop{
-  from{transform:scale(0.7); opacity:0;}
-  to{transform:scale(1); opacity:1;}
-}
-.confetti {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: red;
-  top: -10px;
-  animation: fall 2s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
 </style>
 </head>
 
@@ -131,7 +112,7 @@ button{
 
 <!-- LOGIN -->
 <div id="login" class="container">
-  <h2>Reddy bro… surprise open cheyy 😄</h2>
+  <h2>Reddy bro… surprise open chey 😄</h2>
   <input type="password" id="password" placeholder="Enter ur roll number">
   <br><br>
   <button onclick="checkPassword()">Open</button>
@@ -147,7 +128,7 @@ button{
   <div id="monkeyOptions" class="hidden">
     <div class="monkey-wrapper">
       <div class="monkey-circle" onclick="openReddyPassword()">
-        <img src="images\reddy\1.jpg">
+        <img src="1.jpg">
 
       </div>
       <div class="monkey-circle" onclick="openBindu()">
@@ -233,41 +214,16 @@ button{
 <!-- QUESTIONS -->
 <div id="questionsPage" class="container hidden">
   <button class="back-btn" onclick="goBack()">⬅ Back</button>
-
   <div class="card">
     <h3 id="questionTitle"></h3>
     <p id="questionText"></p>
-
-    <input type="text" id="answerInput" placeholder="Type your answer..." required>
+    <input type="text" id="answerInput" placeholder="Type your answer...">
     <br><br>
-
     <button id="nextBtn" onclick="nextQuestion()">Next</button>
-    <button id="surpriseBtn" class="hidden" onclick="showGiftOptions()">🎁 Surprise Gift</button>
-
-    <!-- Gift Options INSIDE card -->
-    <div id="giftOptions" class="hidden" style="margin-top:20px;">
-      <h4>Select your Mystery Box 🎁</h4>
-
-      <label>
-        <input type="radio" name="gift" value="Bike Ride Surprise 🏍️">
-        Mystery Box 1
-      </label><br><br>
-
-      <label>
-        <input type="radio" name="gift" value="Special Birthday Treat 🍕">
-        Mystery Box 2
-      </label><br><br>
-
-      <label>
-        <input type="radio" name="gift" value="Secret Memory Video 🎥">
-        Mystery Box 3
-      </label><br><br>
-
-      <button onclick="submitGift()">Reveal Gift 🔥</button>
-    </div>
-
+    <button id="surpriseBtn" class="hidden" onclick="showGift()">🎁 Surprise Gift</button>
   </div>
 </div>
+
 <!-- GIFT -->
 <div id="giftPage" class="container hidden">
   <h2>🎁 Final Surprise</h2>
@@ -284,7 +240,6 @@ button{
     <h3>All Answers 🔥</h3>
     <div id="answersList"></div>
   </div>
-<button onclick="sendData()">Submit</button>
 </div>
 
 <div class="response-icon" id="responseIcon" onclick="openResponsePassword()">R</div>
@@ -325,7 +280,6 @@ function hideAll(){
 }
 
 // QUESTIONS LOGIC
-let giftRevealed = false;
 let questions=[
 "Mana first meet ekkada?",
 "First fight reason?",
@@ -343,7 +297,6 @@ let currentQuestion=0;
 let answers=[];
 
 function openQuestions(){
-giftRevealed = false;
   hideAll();
   document.getElementById("questionsPage").classList.remove("hidden");
   currentQuestion=0;
@@ -361,14 +314,7 @@ function showQuestion(){
 }
 
 function nextQuestion(){
-let answerValue = document.getElementById("answerInput").value.trim();
-
-if(answerValue === ""){
-  alert("Answer compulsory ra bro 😄");
-  return;
-}
-
-answers.push(answerValue);
+  answers.push(document.getElementById("answerInput").value);
   currentQuestion++;
 
   if(currentQuestion<questions.length){
@@ -382,154 +328,35 @@ answers.push(answerValue);
   }
 }
 
-function submitGift(){
-
-  if(giftRevealed){
-    alert("Gift already revealed 😄");
-    return;
-  }
-
-  let selected = document.querySelector('input[name="gift"]:checked');
-
-  if(!selected){
-    alert("Select one mystery box first 😄");
-    return;
-  }
-
-  giftRevealed = true; // lock gift
-
-  let giftValue = selected.value;
-
-  let finalData = {
-    answers: answers,
-    gift: giftValue
-  };
-
-  localStorage.setItem("birthdayResponse", JSON.stringify(finalData));
-
-  document.getElementById("questionTitle").innerText="🎉 SURPRISE REVEALED!";
-launchConfetti();
-  document.getElementById("questionText").innerHTML=`
-    <div style="
-      margin-top:20px;
-      padding:20px;
-      background:#fff0f5;
-      border-radius:15px;
-      font-size:20px;
-      font-weight:bold;
-      animation:pop 0.4s ease;
-    ">
-      🎁 Your Surprise Gift is:<br><br>
-      ${giftValue} 🔥
-      <br><br>
-      <button onclick="closeGift()" 
-        style="
-          padding:8px 15px;
-          background:#ff4d6d;
-          color:white;
-          border:none;
-          border-radius:8px;
-          cursor:pointer;
-        ">
-        Close ❌
-      </button>
-    </div>
-  `;
-
-  // Disable all radio buttons
-  document.querySelectorAll('input[name="gift"]').forEach(r => r.disabled = true);
+function showGift(){
+  hideAll();
+  document.getElementById("giftPage").classList.remove("hidden");
 }
+
 function openResponsePassword(){
-
-  let pass = prompt("Enter Response Password");
-
-  if(pass === "1111"){
-
+  let pass=prompt("Enter Response Password");
+  if(pass==="1111"){
     hideAll();
     document.getElementById("responsePage").classList.remove("hidden");
-
-    let list = document.getElementById("answersList");
-    list.innerHTML = "";
-
-    // Get data from localStorage
-    let savedData = JSON.parse(localStorage.getItem("birthdayResponse"));
-
-    if(!savedData){
-      list.innerHTML = "<p>No answers submitted yet 😄</p>";
-    } 
-    else {
-
-      // Display all answers
-      for(let i = 0; i < savedData.answers.length; i++){
-        list.innerHTML += "<p><b>Q" + (i+1) + ":</b> " + savedData.answers[i] + "</p>";
+    let list=document.getElementById("answersList");
+    list.innerHTML="";
+    if(answers.length===0){
+      list.innerHTML="<p>No answers submitted yet 😄</p>";
+    }else{
+      for(let i=0;i<answers.length;i++){
+        list.innerHTML+="<p><b>Q"+(i+1)+":</b> "+answers[i]+"</p>";
       }
-
-      // Display selected gift
-      list.innerHTML += "<hr><p><b>Selected Gift:</b> " + savedData.gift + " 🎁</p>";
     }
-
-  } 
-  else {
-    alert("Wrong Password");
-  }
+  }else alert("Wrong Password");
 }
+
 function goBack(){
   hideAll();
   document.getElementById("menu").classList.remove("hidden");
 }
-function showGiftOptions(){
-  document.getElementById("giftOptions").classList.remove("hidden");
-  document.getElementById("surpriseBtn").classList.add("hidden");
-}
-function closeGift(){
-  document.getElementById("giftOptions").classList.add("hidden");
-  document.getElementById("questionsPage").classList.add("hidden");
-  document.getElementById("menu").classList.remove("hidden");
-}
-function launchConfetti(){
 
-  for(let i=0; i<40; i++){
-
-    let confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-
-    confetti.style.left = Math.random()*100 + "vw";
-    confetti.style.backgroundColor = 
-      ["#ff4d6d","#ffcc00","#00c2ff","#7dff7d","#ff8c42"]
-      [Math.floor(Math.random()*5)];
-
-    document.body.appendChild(confetti);
-
-    setTimeout(()=>{
-      confetti.remove();
-    },2000);
-  }
-}
-function sendData(){
-
-  let savedData = JSON.parse(localStorage.getItem("birthdayResponse"));
-
-  console.log("Sending Data:", savedData);
-
-  fetch("https://script.google.com/macros/s/AKfycbzFq4MrH2imG-6NcCKkMyGKY0zkkcdb4SgZ5mcGbxfYsjp8VhAdNHikUMT3ZcuFRzLxTA/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(savedData)
-  })
-  .then(response => response.text())
-  .then(data => {
-    console.log("Success:", data);
-  })
-  .catch(error => {
-    console.error("Error:", error);
-  });
-
-}
-   
-        
 </script>
 </body>
-</html>  
+
+</html>
 
