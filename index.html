@@ -5,55 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reddy Bro Birthday</title>
 
+<!-- ✅ Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;}
 
 body{
   margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(to bottom,#fdfbfb,#ebedee);
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#e0c3fc,#8ec5fc,#d4fc79);
+  background-size:300% 300%;
+  animation: bgMove 12s ease infinite;
   text-align:center;
+  color:#333;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 .hidden{display:none;}
-.container{padding:25px 15px;}
 
+.container{
+  padding:25px 15px;
+}
+
+/* Input Upgrade */
 input{
   padding:12px;
   width:85%;
-  border-radius:10px;
-  border:1px solid #ccc;
+  border-radius:25px;
+  border:none;
+  outline:none;
   font-size:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
+#nextBtn{
+  display:block;
+  margin:15px auto;
+}
+/* Button Upgrade */
 button{
-  padding:12px 18px;
+  padding:12px 22px;
   margin:10px;
   border:none;
-  border-radius:10px;
-  background:#ff4d6d;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fab);
   color:white;
-  font-size:16px;
+  font-size:15px;
+  font-weight:600;
   cursor:pointer;
+  transition:0.3s;
 }
 
-.back-btn{background:#555;}
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 8px 20px rgba(255,0,100,0.3);
+}
 
+.back-btn{
+  background:#555;
+}
+
+/* Card Upgrade */
 .card{
-  background:white;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
   width:92%;
   margin:20px auto;
-  padding:20px;
-  border-radius:18px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  transition:0.3s;
 }
 
-/* Monkey circle layout */
+.card:hover{
+  transform:scale(1.02);
+}
+
+/* Monkey Layout */
 .monkey-wrapper{
   display:flex;
   justify-content:center;
   gap:20px;
   margin-top:20px;
+  flex-wrap:wrap;
 }
 
 .monkey-circle{
@@ -61,8 +101,14 @@ button{
   height:100px;
   border-radius:50%;
   overflow:hidden;
-  border:4px solid #ff4d6d;
+  border:4px solid white;
   cursor:pointer;
+  transition:0.3s;
+}
+
+.monkey-circle:hover{
+  transform:scale(1.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
 .monkey-circle img{
@@ -71,13 +117,14 @@ button{
   object-fit:cover;
 }
 
-/* Story left-right */
+/* Story Section */
 .story-row{
   display:flex;
   align-items:center;
   gap:15px;
   margin-bottom:25px;
   text-align:left;
+  flex-wrap:wrap;
 }
 
 .story-row img{
@@ -87,9 +134,12 @@ button{
   object-fit:cover;
 }
 
-.story-row p{flex:1;}
+.story-row p{
+  flex:1;
+  font-weight:500;
+}
 
-/* Response icon */
+/* Response Icon */
 .response-icon{
   position:fixed;
   right:15px;
@@ -105,30 +155,157 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: red;
+  top: -10px;
+  animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+/* ===== REDDY PAGE UPGRADE DESIGN ===== */
+
+#reddyPage{
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+  animation: reddyBgMove 12s ease infinite;
+}
+
+@keyframes reddyBgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+#reddyPage .card{
+  border-radius:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  transition:0.4s;
+}
+
+#reddyPage .card:hover{
+  transform: translateY(-5px) scale(1.02);
+}
+
+.story-row{
+  padding:10px;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.story-row img{
+  transition:0.4s;
+}
+
+.story-row img:hover{
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Secret Button */
+#reddyPage button{
+  border-radius:30px;
+  padding:12px 25px;
+  background: linear-gradient(45deg,#ff4d6d,#ff8fab);
+  border:none;
+  color:white;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+#reddyPage button:hover{
+  transform: scale(1.08);
+  box-shadow:0 8px 20px rgba(255,0,100,0.3);
+}
+#reddyPage{
+  scroll-behavior: smooth;
+}
+
+#reddyPage .card{
+  border-radius:25px;
+  margin-bottom:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  transition:0.4s;
+}
+
+#reddyPage .card:hover{
+  transform: scale(1.02);
+}
+.story-row img{
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.story-row img:hover{
+  transform: scale(1.1);
+}
+
+#storyPage .card{
+  border-radius:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+}
+.music-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:20px;
+  height:20px;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fab);
+  border-radius:20%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  z-index:999;
+  transition:0.3s;
+}
+
+.music-btn:hover{
+  transform:scale(1.1);
+}
 </style>
 </head>
 
 <body>
 
 <!-- LOGIN -->
-<div id="login" class="container">
-  <h2>Reddy bro… surprise open chey 😄</h2>
-  <input type="password" id="password" placeholder="Enter ur roll number">
-  <br><br>
-  <button onclick="checkPassword()">Open</button>
+<div id="login" class="container py-5">
+  <h2 class="mb-4">Reddy bro… surprise open chey 😄</h2>
+  <input type="password" id="password" class="form-control w-50 mx-auto" placeholder="Enter ur roll number">
+  <br>
+  <button class="btn btn-danger mt-3" onclick="checkPassword()">Open</button>
 </div>
 
 <!-- MENU -->
 <div id="menu" class="container hidden">
   <h2>Welcome Reddy Bro 😎</h2>
-  <button onclick="openStory()">Our Friendship Story</button>
-  <button onclick="toggleMonkeys()">3 monkeys🐒🐵🙈 🫶</button>
-  <button onclick="openQuestions()">Questions</button>
+ <audio id="bgMusic" loop>
+<source src="images\reddy\1.mp3" type="audio/mp3">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">
+🎵
+</div>
+<button onclick="openFriendshipStory()">Our Friendship Story</button>
+  <button class="btn btn-danger m-2"  onclick="toggleMonkeys()">3 monkeys🐒🐵🙈 🫶</button>
+  <button class="btn btn-danger m-2"  onclick="openQuestions()">Surprise </button>
 
   <div id="monkeyOptions" class="hidden">
     <div class="monkey-wrapper">
       <div class="monkey-circle" onclick="openReddyPassword()">
-        <img src="1.jpg">
+        <img src="images\reddy\1.jpg">
 
       </div>
       <div class="monkey-circle" onclick="openBindu()">
@@ -144,62 +321,236 @@ button{
   </div>
 </div>
 
+
+
+<!-- FRIENDSHIP STORY PAGE -->
+<div id="storyPage" class="container hidden">
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2 class="mt-3 text-center">❤️ Our Friendship Story ❤️</h2>
+
+<div class="card mt-4 p-3">
+
+<div class="story-row">
+<img src="images/reddy/98.jpg">
+<p>🎉 How we met first time</p>
+<h6>MCA life lo nenu first chusindi Reddy bro  ni ❤️
+Tarvatha Srivani, Sridevi, Bindu — ala chala fast ga mana friendship start aindi.
+Enta fast ga ante explain cheyalenu kaani manchi bond form aindi 😄</h6>
+
+</div>
+
+<div class="story-row">
+<img src="images/reddy/99.jpg">
+<p>🔥 Crazy fun moments together</p>
+<h6>College ante naku first gurthu vachedi mee naluguru he bro.
+College unna lekapoina manam  college ki vellevallam feel.
+Araku valley daggara kurchoni matladukovadam , SK lo biryani thini intiki velladam — aa days
+ life lo chala beautiful memories ga migilipoyayi ❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/100.jpg">
+<p>🤝 Bond became stronger</p>
+<h6>Bindu aunty ante naku chala istam ❤️
+enduku ante telidhu Bindu thakkuva matladutundi. Call chesina, message chesina   reply ivvadhu 😄
+Kani Bindu unnatha time aina manchiga untundi  bindu ki nenu ante istam ledhu adi vere visyam 😄.</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/88.jpg">
+<p>❤️ Friends forever</p>
+<h6>Reddy bro ❤️ — Naku chala support chesindi.
+  class boys emina ante oppukunedhi kadhu 
+Ela undali, ela undakudadhu ani correct advice iche person Reddy.
+Thakkuva days lone Reddy naku chala close aipoindi.
+entha la ante Kukka pandi ani piliche range friendship mana madhya undi 😂❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/92.jpg">
+<p>❤️ Friends forever</p>
+<h6> sridevi bro ❤️- memu memu local friends eppudu money adigina adi
+   mid night aina istundi. vanta lu rakapoina naku ela vanta cheyyali
+    cheppe best guide devi bro </h6>
+</div>
+<div class="story-row">
+<img src="images/reddy/94.jpg">
+<p>❤️ Friends forever</p>
+<h6> srivani  bro ❤️- Srivani ante konchem jagratha ga matladali 
+  ani anipistundi, kani adi kuda oka special bond ❤️
+always late asalu 8 ki complex ki vachi 10 ki clg ki vellevallam 
+Srivani bro  first party ivvadam nundi mana group lo party culture start aindi 😄🎉 </h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/91.jpg">
+<p>❤️ our birthday dates </p>
+<h6>Feb 4 — Sridevi 
+March 27 — Reddy 
+May 5 — Srivani 
+May 9 — Bindu 
+july 20-Me 
+Every celebration became a beautiful memory ❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/89.jpg">
+<p>❤️ trio</p>
+<h6>MCA almost aipoind inka  classes levu,
+Kani memu still college ki vellevallam.
+
+Nenu Bindu + Reddy tr Scooty meeda Sklm lo tirigadam,
+konni sarlu  Bindu valla home, konni sarlu ma home — biryani thini malli vellipovadam ❤️
+
+Beach ki velladam, Srikurmam, Shalihundam, Konda  pina temple —
+These are my best memories ❤️
+
+August 07, 2022 — My best day ❤️
+MCA life final  day memories aa roju bhaga enjoy chesam </h6>
+
+<video controls width="100%">
+<source src="images/reddy/40.mp4">
+</video>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/90.jpg">
+<p>❤️ Friends forever</p>
+Reddy  bro naku birthday ki ichina shirt still nenu jagratha ga dachukunna 😄❤️
+</div>
+
+
+</div>
+
+
+<div class="card mt-4 p-4 text-center">
+
+<h3>🎂 Special Message</h3>
+
+<p>
+Friendship is not about time ❤️  
+It is about memories and trust 😄
+</p>
+
+</div>
+
+</div>
+
 <!-- REDDY PASSWORD -->
 <div id="reddyPasswordPage" class="container hidden">
-  <button class="back-btn" onclick="goBack()">⬅</button>
-  <div class="card">
-    <input type="password" id="reddyPass" placeholder="Mbl password enter chey bro">
+<button class="btn btn-secondary mb-3" onclick="goBack()">⬅ Back</button>
+<div class="card shadow p-4 mx-auto" style="max-width:600px;">
+      <input type="password" id="reddyPass" placeholder="Mbl password enter chey bro">
     <br><br>
     <button onclick="checkReddyPassword()">Open</button>
   </div>
 </div>
 
-<!-- STORY PAGE -->
+
+<!-- REDDY STORY PAGE -->
 <div id="reddyPage" class="container hidden">
-  <button class="back-btn" onclick="goBack()">⬅ Back</button>
 
-  <div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
 
-  <div class="story-row">
-    <img src="r2.jpg">
-    <p>Class lo fun moments 🔥</p>
-  </div>
+<h2 class="mt-3 text-center">❤️ Happy Birthday Reddy bro ❤️</h2>
 
-  <div class="story-row">
-    <img src="r3.jpg">
-    <p>Life long bond ra bro 🤝</p>
-  </div>
+<!-- BIRTHDAY MESSAGE -->
+<div class="card mt-4 p-4">
+<h3>🎂 Birthday Message</h3>
+<p>
+Happy Birthday Reddy Bro ❤️  
+You are very special in our life 🎉
+</p>
+</div>
+
+<!-- MEMORIES -->
+<div class="card mt-4 p-3">
+
+<h3>🖼 Memories & Story</h3>
+
 <div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
+<img src="images/reddy/1.jpg">
+<p>First beautiful memory ❤️</p>
+</div>
+
 <div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
+<img src="images/reddy/2.jpg">
+<p>Fun moments together 🎉</p>
+</div>
+
 <div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
-<div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
-<div class="story-row">
-    <img src="images\jathi ratnalu\33.jpg">
-    <p>Mana first meet memories 😄</p>
-  </div>
+<img src="images/reddy/3.jpg">
+<p>Bond forever 🤝❤️</p>
+</div>
 
 </div>
 
+<!-- LETTERS -->
+<div class="card mt-4 p-3">
+<img src="images/reddy/87.jpg">
+<h3>💌 Letters From Reddy Bro</h3>
+
+<p>
+You are best bro forever ❤️  
+Stay happy always 🎂
+</p>
+
+</div>
+
+<!-- VIDEOS -->
+<div class="card mt-4 p-3">
+
+<h3>🎥 Videos Memories</h3>
+
+<video controls width="100%">
+<source src="images/reddy/50.mp4">
+</video>
+
+<video controls width="100%">
+<source src="images/reddy/38.mp4">
+</video>
+<video controls width="100%">
+<source src="images/reddy/48.mp4">
+</video>
+</div>
+
+<!-- REELS -->
+<div class="card mt-4 p-3">
+
+<h3>📱 Reels Memories</h3>
+
+<video controls width="100%">
+<source src="images/reddy/42.mp4">
+</video>
+
+<video controls width="100%">
+<source src="images/reddy/39.mp4">
+</video>
+
+<video controls width="100%">
+<source src="images/reddy/44.mp4">
+</video>
+<video controls width="100%">
+<source src="images/reddy/46.mp4">
+</video>
+</div>
+
+<!-- FINAL MESSAGE -->
+<div class="card mt-4 p-4 text-center">
+
+<h2>❤️ Thank You For Everything ❤️</h2>
+<p>Happy Birthday 🎉</p>
+
+</div>
+
+</div>
 <!-- BINDU -->
 <div id="binduPage" class="container hidden">
   <button class="back-btn" onclick="goBack()">⬅ Back</button>
   <div class="card">
-    <p>Bindu special page 💛</p>
+    <p>Bindu  page loading  💛</p>
   </div>
 </div>
 
@@ -207,23 +558,48 @@ button{
 <div id="mePage" class="container hidden">
   <button class="back-btn" onclick="goBack()">⬅ Back</button>
   <div class="card">
-    <p>This is Me section 🙋‍♂️</p>
+    <p>This is My section 🙋‍♂️</p>
   </div>
 </div>
 
 <!-- QUESTIONS -->
 <div id="questionsPage" class="container hidden">
   <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
   <div class="card">
     <h3 id="questionTitle"></h3>
     <p id="questionText"></p>
-    <input type="text" id="answerInput" placeholder="Type your answer...">
+
+    <input type="text" id="answerInput" placeholder="Type your answer..." required>
     <br><br>
+
     <button id="nextBtn" onclick="nextQuestion()">Next</button>
-    <button id="surpriseBtn" class="hidden" onclick="showGift()">🎁 Surprise Gift</button>
+    <button id="surpriseBtn" class="hidden" onclick="showGiftOptions()">🎁 Surprise Gift</button>
+
+    <!-- Gift Options INSIDE card -->
+    <div id="giftOptions" class="hidden" style="margin-top:20px;">
+      <h4>Select your Mystery Box 🎁</h4>
+
+      <label>
+        <input type="radio" name="gift" value="Dress 👗 ">
+        Mystery Box 1
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="gift" value="Watch ⌚">
+        Mystery Box 2
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="gift" value="hand bag 👜">
+        Mystery Box 3
+      </label><br><br>
+
+      <button onclick="submitGift()">Reveal Gift 🔥</button>
+    </div>
+
   </div>
 </div>
-
 <!-- GIFT -->
 <div id="giftPage" class="container hidden">
   <h2>🎁 Final Surprise</h2>
@@ -240,123 +616,480 @@ button{
     <h3>All Answers 🔥</h3>
     <div id="answersList"></div>
   </div>
+<button onclick="sendData()">Submit</button>
 </div>
 
 <div class="response-icon" id="responseIcon" onclick="openResponsePassword()">R</div>
 
-<script>
 
-// LOGIN
+
+<script>
+// ================= LOGIN =================
+
 function checkPassword(){
-  if(document.getElementById("password").value==="111"){
+  if(document.getElementById("password").value === "1"){
+    document.getElementById("bgMusic").play();
     document.getElementById("login").classList.add("hidden");
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("responseIcon").style.display="flex";
-  } else alert("Wrong password");
+  } else {
+    alert("Wrong password");
+  }
 }
-
-function toggleMonkeys(){
-  document.getElementById("monkeyOptions").classList.toggle("hidden");
-}
-
-function openStory(){hideAll();document.getElementById("reddyPage").classList.remove("hidden");}
-function openReddyPassword(){hideAll();document.getElementById("reddyPasswordPage").classList.remove("hidden");}
-
-function checkReddyPassword(){
-  if(document.getElementById("reddyPass").value==="575757"){
-    hideAll();
-    document.getElementById("reddyPage").classList.remove("hidden");
-  } else alert("Wrong Password");
-}
-function openBindu(){alert("Bindu page coming soon 😄");}
-function openBindu(){
-  alert("Bindu page coming soon 😄");
-}
-function openBindu(){hideAll();document.getElementById("binduPage").classList.remove("hidden");}
-function openMe(){hideAll();document.getElementById("mePage").classList.remove("hidden");}
 
 function hideAll(){
-  document.querySelectorAll(".container").forEach(el=>el.classList.add("hidden"));
+  document.querySelectorAll(".container")
+    .forEach(el => el.classList.add("hidden"));
 }
 
-// QUESTIONS LOGIC
-let questions=[
-"Mana first meet ekkada?",
-"First fight reason?",
-"Who talks more?",
-"Who says sorry first?",
-"Mana fav place?",
-"Who is emotional?",
-"Who is over thinker?",
-"Who is lazy?",
-"Friendship life long kadha?",
-"Birthday treat eppudu?"
+// ================= QUESTIONS =================
+
+let giftRevealed = false;
+
+const questions = [
+  { title: "Question 1 💖", text: "test" },
+  { title: "Question 2 😍", text: "test" },
+  { title: "Question 3 🥰", text: "test" },
+  { title: "Question 4 🎂", text: "test" },
+  { title: "Question 5 🎉", text: "test" }
 ];
 
-let currentQuestion=0;
-let answers=[];
+let currentQuestion = 0;
+let answers = [];
 
 function openQuestions(){
   hideAll();
   document.getElementById("questionsPage").classList.remove("hidden");
-  currentQuestion=0;
-  answers=[];
+
+  currentQuestion = 0;
+  answers = [];
+  giftRevealed = false;
+
   document.getElementById("nextBtn").classList.remove("hidden");
   document.getElementById("surpriseBtn").classList.add("hidden");
   document.getElementById("answerInput").classList.remove("hidden");
+
   showQuestion();
 }
 
 function showQuestion(){
-  document.getElementById("questionTitle").innerText="Question "+(currentQuestion+1);
-  document.getElementById("questionText").innerText=questions[currentQuestion];
-  document.getElementById("answerInput").value="";
+  document.getElementById("questionTitle").innerText =
+    questions[currentQuestion].title;
+
+  document.getElementById("questionText").innerText =
+    questions[currentQuestion].text;
+
+  document.getElementById("answerInput").value = "";
 }
 
 function nextQuestion(){
-  answers.push(document.getElementById("answerInput").value);
+
+  let answerValue =
+    document.getElementById("answerInput").value.trim();
+
+  if(answerValue === ""){
+    alert("Answer compulsory bro 😄");
+    return;
+  }
+
+  answers.push(answerValue);
   currentQuestion++;
 
-  if(currentQuestion<questions.length){
+  if(currentQuestion < questions.length){
     showQuestion();
-  }else{
-    document.getElementById("questionTitle").innerText="All Done 😄";
-    document.getElementById("questionText").innerText="Ready for your surprise?";
+  } else {
+
+    document.getElementById("questionTitle").innerText =
+      "All Done 😄";
+
+    document.getElementById("questionText").innerText =
+      "Click below for your surprise 🎁";
+
     document.getElementById("answerInput").classList.add("hidden");
     document.getElementById("nextBtn").classList.add("hidden");
     document.getElementById("surpriseBtn").classList.remove("hidden");
   }
 }
 
-function showGift(){
-  hideAll();
-  document.getElementById("giftPage").classList.remove("hidden");
+// ================= SURPRISE =================
+
+function showGiftOptions(){
+  document.getElementById("giftOptions").classList.remove("hidden");
+  document.getElementById("surpriseBtn").classList.add("hidden");
 }
 
-function openResponsePassword(){
-  let pass=prompt("Enter Response Password");
-  if(pass==="1111"){
-    hideAll();
-    document.getElementById("responsePage").classList.remove("hidden");
-    let list=document.getElementById("answersList");
-    list.innerHTML="";
-    if(answers.length===0){
-      list.innerHTML="<p>No answers submitted yet 😄</p>";
-    }else{
-      for(let i=0;i<answers.length;i++){
-        list.innerHTML+="<p><b>Q"+(i+1)+":</b> "+answers[i]+"</p>";
-      }
-    }
-  }else alert("Wrong Password");
+function submitGift(){
+
+  if(giftRevealed){
+    alert("Gift already revealed 😄");
+    return;
+  }
+
+  let selected =
+    document.querySelector('input[name="gift"]:checked');
+
+  if(!selected){
+    alert("Select one gift first 😄");
+    return;
+  }
+
+  giftRevealed = true;
+
+  let giftValue = selected.value;
+
+  let finalData = {
+    answers: answers,
+    gift: giftValue,
+    date: new Date().toLocaleString()
+  };
+
+  localStorage.setItem(
+    "birthdayResponse",
+    JSON.stringify(finalData)
+  );
+
+  document.getElementById("questionTitle").innerText =
+    "🎉 SURPRISE REVEALED!";
+
+  document.getElementById("questionText").innerHTML =
+    "<h3>Your Gift: " + giftValue + " 🎁</h3>";
+
+  document.querySelectorAll('input[name="gift"]')
+    .forEach(r => r.disabled = true);
+
+  sendData(); // send to Google Sheet
 }
+
+// ================= GOOGLE SHEET =================
+
+function sendData(){
+
+  let savedData =
+    JSON.parse(localStorage.getItem("birthdayResponse"));
+
+  if(!savedData) return;
+
+  fetch("https://script.google.com/macros/s/AKfycbzpPWE2kdd9Kgmx2I5Vhu3is451UQsPYdypjB1yIE1yHcfhh8Rq231u2KdhJWqcXW6h8g/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(savedData)
+  });
+
+  console.log("Data sent to Google Sheet");
+}
+
+// ================= RESPONSE PAGE =================
+
+function openResponsePassword(){
+
+  let pass = prompt("Enter Response Password");
+
+  if(pass === "1111"){
+
+    hideAll();
+    document.getElementById("responsePage")
+      .classList.remove("hidden");
+
+    let list =
+      document.getElementById("answersList");
+
+    list.innerHTML = "";
+
+    let savedData =
+      JSON.parse(localStorage.getItem("birthdayResponse"));
+
+    if(!savedData){
+      list.innerHTML =
+        "<p>No answers submitted yet 😄</p>";
+    } else {
+
+      for(let i=0;i<savedData.answers.length;i++){
+        list.innerHTML +=
+          "<p><b>Q"+(i+1)+":</b> "
+          + savedData.answers[i] + "</p>";
+      }
+
+      list.innerHTML +=
+        "<hr><p><b>Selected Gift:</b> "
+        + savedData.gift + " 🎁</p>";
+
+      list.innerHTML +=
+        "<p><b>Date:</b> "
+        + savedData.date + "</p>";
+    }
+
+  } else {
+    alert("Wrong Password");
+  }
+}
+
+// ================= BACK =================
 
 function goBack(){
   hideAll();
-  document.getElementById("menu").classList.remove("hidden");
+  document.getElementById("menu")
+    .classList.remove("hidden");
+}
+   // ================= MENU FUNCTIONS =================
+
+
+function toggleMonkeys(){
+  document.getElementById("monkeyOptions")
+    .classList.toggle("hidden");
+}
+function openReddyStory(){
+  hideAll();
+  document.getElementById("reddyPage")
+    .classList.remove("hidden");
+
+  startReddyTypewriter();
+  startReddySlideshow();
+}
+function openReddyPassword(){
+  hideAll();
+  document.getElementById("reddyPasswordPage")
+    .classList.remove("hidden");
 }
 
+function checkReddyPassword(){
+
+  let enteredPass = document.getElementById("reddyPass").value;
+
+  if(enteredPass === "57"){   // your password
+
+    document.getElementById("reddyPass").value = "";
+
+    hideAll();  // all pages hide
+
+    document.getElementById("reddyPasswordPage")
+      .classList.add("hidden");
+
+    document.getElementById("reddyPage")
+      .classList.remove("hidden");
+
+  } else {
+    alert("Wrong Password 😄");
+  }
+}
+function openBindu(){
+  hideAll();
+  document.getElementById("binduPage")
+    .classList.remove("hidden");
+}
+
+function openMe(){
+  hideAll();
+  document.getElementById("mePage")
+    .classList.remove("hidden");
+}    
+
+function startReddyTypewriter(){
+
+  let text = "Reddy... nuvvu na life lo very special person ❤️";
+
+  let i = 0;
+  let box = document.getElementById("reddyTypeText");
+
+  box.innerHTML = "";
+
+  let typing = setInterval(function(){
+
+    if(i < text.length){
+      box.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typing);
+    }
+
+  }, 50);
+}
+// ================= REDDY MODULE ONLY =================
+
+// When Reddy page opens
+function openStory(){
+  hideAll();
+  document.getElementById("reddyPage")
+    .classList.remove("hidden");
+
+  startReddyTypewriter();
+  startReddySlideshow();
+}
+
+// TYPEWRITER
+function startReddyTypewriter(){
+
+  let text = "Reddy... mana bond forever ra ❤️🔥";
+  let i = 0;
+  let box = document.getElementById("reddyTypeText");
+
+  box.innerHTML = "";
+
+  let typing = setInterval(function(){
+    if(i < text.length){
+      box.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typing);
+    }
+  }, 50);
+}
+
+
+// SLIDESHOW
+let reddyImages = [
+  "images/reddy/1.jpg",
+  "images/reddy/2.jpg",
+  "images/reddy/3.jpg"
+];
+
+let slideIndex = 0;
+
+function startReddySlideshow(){
+
+  setInterval(function(){
+
+    slideIndex++;
+
+    if(slideIndex >= reddyImages.length){
+      slideIndex = 0;
+    }
+
+    document.getElementById("reddySlide").src =
+      reddyImages[slideIndex];
+
+  }, 3000);
+}
+
+
+// SURPRISE
+function showReddySurprise(){
+  document.getElementById("reddySurpriseBox")
+    .classList.remove("hidden");
+}
+
+function openFriendshipStory(){
+  hideAll();
+  document.getElementById("storyPage")
+    .classList.remove("hidden");
+}
+// ================= REDDY LETTER TYPE EFFECT =================
+
+function startReddyLetter(){
+
+  let text =
+  "Dear Reddy bro ❤️\nYou are one of the best people in life.\nHappy birthday and stay blessed 🎂🎉";
+
+  let i = 0;
+
+  let box = document.getElementById("reddyLetterText");
+  box.innerHTML = "";
+
+  let typing = setInterval(function(){
+
+    if(i < text.length){
+      box.innerHTML += text.charAt(i);
+      i++;
+    }
+    else{
+      clearInterval(typing);
+    }
+
+  },40);
+}
+
+
+// ===== REDDY FLOATING MEMORY PHOTOS =====
+
+const memoryImages = [
+  "images/reddy/100.jpg",
+  "images/reddy/99.jpg",
+  "images/reddy/98.jpg",
+  "images/reddy/97.jpg",
+  "images/reddy/96.jpg",
+  "images/reddy/95.jpg",
+  "images/reddy/94.jpg",
+  "images/reddy/93.jpg",
+];
+
+setInterval(() => {
+
+  let img = document.createElement("img");
+
+  img.src = memoryImages[Math.floor(Math.random()*memoryImages.length)];
+
+  img.style.position = "fixed";
+  img.style.width = "40px";
+  img.style.height = "40px";
+  img.style.objectFit = "cover";
+  img.style.borderRadius = "50%";
+  img.style.left = Math.random()*100 + "vw";
+  img.style.top = "100vh";
+  img.style.opacity = "0.8";
+  img.style.transition = "6s linear";
+  img.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+
+  document.body.appendChild(img);
+
+  setTimeout(()=>{
+    img.style.top = "-10vh";
+  },200);
+
+  setTimeout(()=>{
+    img.remove();
+  },7000);
+
+},1500);
+function showReddyStep2(){
+ document.getElementById("reddyStep1").classList.add("hidden");
+ document.getElementById("reddyStep2").classList.remove("hidden");
+}
+
+function showReddyStep3(){
+ document.getElementById("reddyStep2").classList.add("hidden");
+ document.getElementById("reddyStep3").classList.remove("hidden");
+}
+
+function showReddyStep4(){
+ document.getElementById("reddyStep3").classList.add("hidden");
+ document.getElementById("reddyStep4").classList.remove("hidden");
+}
+
+function showReddyStep5(){
+ document.getElementById("reddyStep4").classList.add("hidden");
+ document.getElementById("reddyStep5").classList.remove("hidden");
+}
+
+function showReddyStep6(){
+ document.getElementById("reddyStep5").classList.add("hidden");
+ document.getElementById("reddyStep6").classList.remove("hidden");
+}
+function openFriendshipStory(){
+  hideAll();
+  document.getElementById("storyPage")
+  .classList.remove("hidden");
+}
+let musicPlaying = false;
+
+function toggleMusic(){
+
+  let music = document.getElementById("bgMusic");
+
+  if(musicPlaying){
+    music.pause();
+    musicPlaying = false;
+  }
+  else{
+    music.play();
+    musicPlaying = true;
+  }
+
+}
 </script>
+<audio id="bgMusic" loop>
+<source src="music/birthday.mp3" type="audio/mp3">
+</audio>
 </body>
-
 </html>
-
