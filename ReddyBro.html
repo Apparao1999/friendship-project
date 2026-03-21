@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reddy Bro Birthday</title>
+
+<!-- ✅ Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+background: linear-gradient(135deg,#ff9a9e,#fecfef,#f6d365,#a1c4fd);
+  background-size:300% 300%;
+  animation: bgMove 12s ease infinite;
+  text-align:center;
+  color:#333;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.hidden{display:none;}
+
+.container{
+  padding:25px 15px;
+}
+
+/* Input Upgrade */
+input{
+  padding:12px;
+  width:85%;
+  border-radius:25px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+#nextBtn{
+  display:block;
+  margin:15px auto;
+}
+/* Button Upgrade */
+button{
+  padding:12px 22px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fab);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:active{
+transform:scale(0.95);
+}
+
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 8px 20px rgba(255,0,100,0.3);
+}
+
+.back-btn{
+  background:#555;
+}
+
+/* Card Upgrade */
+.card{
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  width:92%;
+  margin:20px auto;
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.02);
+}
+
+/* Monkey Layout */
+.monkey-wrapper{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.monkey-circle{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.monkey-circle:hover{
+  transform:scale(1.1);
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+.monkey-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Story Section */
+.story-row{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+  text-align:center;
+  flex-wrap:wrap;
+}
+
+.story-row img{
+  width:110px;
+  height:110px;
+  border-radius:15px;
+  object-fit:cover;
+}
+
+.story-row p{
+  flex:1;
+  font-weight:500;
+}
+
+/* Response Icon */
+.response-icon{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  width:45px;
+  height:45px;
+  background:black;
+  color:white;
+  border-radius:50%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: red;
+  top: -10px;
+  animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+/* ===== REDDY PAGE UPGRADE DESIGN ===== */
+
+#reddyPage{
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+  animation: reddyBgMove 12s ease infinite;
+}
+
+@keyframes reddyBgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+#reddyPage .card{
+  border-radius:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  transition:0.4s;
+}
+
+#reddyPage .card:hover{
+  transform: translateY(-5px) scale(1.02);
+}
+
+.story-row{
+  padding:10px;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.story-row img{
+  transition:0.4s;
+}
+
+.story-row img:hover{
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Secret Button */
+#reddyPage button{
+  border-radius:30px;
+  padding:12px 25px;
+  background: linear-gradient(45deg,#ff4d6d,#ff8fab);
+  border:none;
+  color:white;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+#reddyPage button:hover{
+  transform: scale(1.08);
+  box-shadow:0 8px 20px rgba(255,0,100,0.3);
+}
+#reddyPage{
+  scroll-behavior: smooth;
+}
+
+#reddyPage .card{
+  border-radius:25px;
+  margin-bottom:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+  transition:0.4s;
+}
+
+#reddyPage .card:hover{
+  transform: scale(1.02);
+}
+.story-row img{
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.story-row img:hover{
+  transform: scale(1.1);
+}
+
+#storyPage .card{
+  border-radius:25px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.85);
+}
+.music-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:20px;
+  height:20px;
+  background:linear-gradient(45deg,#ff4d6d,#ff8fab);
+  border-radius:20%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  z-index:999;
+  transition:0.3s;
+}
+
+.music-btn:hover{
+  transform:scale(1.1);
+}
+.hero-title{
+font-family:'Pacifico',cursive;
+font-size:40px;
+color:white;
+text-shadow:0 0 10px rgba(255,0,100,0.6);
+margin-bottom:20px;
+}
+.card{
+border:1px solid rgba(255,255,255,0.3);
+}
+.flash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+opacity:0.8;
+animation:flashFade 0.6s forwards;
+z-index:999;
+}
+
+@keyframes flashFade{
+0%{opacity:0.8;}
+100%{opacity:0;}
+}
+
+.gift-pop{
+animation:popGift 0.7s ease;
+}
+
+@keyframes popGift{
+0%{transform:scale(0.3);opacity:0;}
+60%{transform:scale(1.2);}
+100%{transform:scale(1);opacity:1;}
+}
+.hero-title{
+  font-family:'Pacifico',cursive;
+  font-size:42px;
+  color:white;
+  text-shadow:0 0 20px rgba(255,0,100,0.8);
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Smooth page transition */
+.container{
+  animation: fadePage 0.6s ease;
+}
+
+@keyframes fadePage{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+/* LETTER BOX */
+.letter-box{
+  position: relative;
+  background: url('paper.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+  border-radius: 10px;
+  width: 95%;
+  margin: 20px auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+
+  /* vintage look */
+  filter: sepia(40%) contrast(95%) brightness(95%);
+}
+
+/* Burn edge effect */
+.letter-box::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  border-radius:10px;
+  box-shadow:
+    inset 0 0 30px rgba(0,0,0,0.6),
+    inset 0 0 80px rgba(0,0,0,0.4);
+  pointer-events:none;
+}
+
+/* Text style */
+#letterText{
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5a3e36;
+  text-align: left;
+  white-space: pre-line;
+}
+
+/* Overlay image */
+.memory-overlay{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:10px;
+  opacity:0.25;
+  transform: rotate(-10deg);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="container py-5">
+  <h2 class="mb-4">Reddy bro… surprise open chey 😄</h2>
+  <input type="password" id="password" class="form-control w-50 mx-auto" placeholder="Enter ur lucky number">
+  <br>
+  <button class="btn btn-danger mt-3" onclick="checkPassword()">Open</button>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="container hidden">
+<h2 class="hero-title" id="nameAnimation"></h2>
+ <audio id="bgMusic" autoplay loop>
+<source src="images\reddy\1.mp3" type="audio/mp3">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">
+🎵
+</div>
+<button onclick="openFriendshipStory()">Our Friendship Storys</button>
+  <button class="btn btn-danger m-2"  onclick="toggleMonkeys()">3 monkeys🐒🐵🙈 🫶</button>
+  <button class="btn btn-danger m-2"  onclick="openQuestions()">Surprise </button>
+
+  <div id="monkeyOptions" class="hidden">
+    <div class="monkey-wrapper">
+      <div class="monkey-circle" onclick="openReddyPassword()">
+        <img src="images\reddy\1.jpg">
+
+      </div>
+      <div class="monkey-circle" onclick="openBindu()">
+
+        <img src="images\bindu\01.jpg">
+
+
+       </div>
+      <div class="monkey-circle" onclick="openMe()">
+       <img src="images\me\1111.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- FRIENDSHIP STORY PAGE -->
+<div id="storyPage" class="container hidden">
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2 class="mt-3 text-center">❤️ Our Friendship Storys ❤️</h2>
+
+<div class="card mt-4 p-3">
+
+<div class="story-row">
+<img src="images/reddy/98.jpg">
+<p>🎉 How we met first time</p>
+<h6>MCA life lo nenu first chusindi Reddy bro  ni ❤️
+Tarvatha Srivani, Sridevi, Bindu — ala chala fast ga mana friendship start aindi.
+Enta fast ga ante explain cheyalenu kaani manchi bond form aindi 😄</h6>
+
+</div>
+
+<div class="story-row">
+<img src="images/reddy/99.jpg">
+<p>🔥 Crazy fun moments together</p>
+<h6>College ante naku first gurthu vachedi mee naluguru he bro.
+College unna lekapoina manam  college ki vellevallam .
+Araku valley daggara kurchoni matladukovadam , SK lo biryani thini intiki velladam — aa days
+ life lo chala beautiful memories ga migilipoyayi ❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/100.jpg">
+<p>🤝Bindu ❤️</p>
+<h6>Bindu aunty ante naku chala istam ❤️
+enduku ante telidhu Bindu thakkuva matladutundi. Call chesina, message chesina   reply ivvadhu 😄
+Kani Bindu unnatha time aina manchiga untundi  bindu ki nenu ante istam ledhu adi vere visyam 😄.</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/88.jpg">
+<p>❤️ Reddy  ❤️</p>
+<h6>Reddy bro — Nuv  chala support chesav.
+  class boys emina ante oppukunedhi kadhu 
+Ela undali, ela undakudadhu ani correct advice iche person Reddy.
+Thakkuva days lone Reddy naku chala close aipoindi.
+entha la ante Kukka pandi ani piliche range friendship mana madhya undi 😂❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/92.jpg">
+<p>❤️sridevi ❤️</p>
+<h6> sridevi ❤️- memu memu local friends pedda ga phone calls undav kani only whats up stickers but eppudu money adigina adi
+   mid night aina istundi. vanta lu rakapoina naku ela vanta cheyyali
+    cheppe best guide devi bro  my english teacher also </h6>
+</div>
+<div class="story-row">
+<img src="images/reddy/94.jpg">
+<p>❤️ srivani ❤️</p>
+<h6> srivani  bro ❤️- Srivani ante first  jagratha ga matladali 
+  ani ledhu ante koduthundi , kani adi kuda oka special bond ❤️
+always late asalu 8 ki complex ki vachi 10 ki clg ki vellevallam 
+Srivani bro  first party ivvadam nundi mana group lo party culture start aindi inka prathi roju party lane undedhi😄🎉
+after mca first trip vijaywada lo mi intiki ravadam adi  best memory bro naku next plan tuni chudali eppudu vastamo </h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/91.jpg">
+<p>❤️ our birthday dates </p>
+<h6>Feb 4 — Sridevi 
+March 27 — Reddy 
+May 5 — Srivani 
+May 9 — Bindu 
+july 20-Me 
+Every celebration became a beautiful memory ❤️</h6>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/89.jpg">
+<p>❤️ trio</p>
+<h6>MCA almost aipoind inka  classes levu,
+Kani memu still college ki vellevallam.
+
+Nenu Bindu + Reddy activa Scooty meeda Sklm lo tirigadam,
+konni sarlu  Bindu valla home, konni sarlu ma home — biryani thini malli vellipovadam ❤️
+
+Beach ki velladam, Srikurmam, Shalihundam, Konda  pina temple —
+These are my best memories ❤️
+
+August 07, 2022 — My best day ❤️
+MCA life final  day memories aa roju bhaga enjoy chesam </h6>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/40.mp4">
+</video>
+</div>
+<div>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/A1.mp4">
+</video>
+</div>
+<div>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/A2.mp4">
+</video>
+</div>
+<div>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/210.mp4">
+</video>
+</div>
+<div>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/211.mp4">
+</video>
+</div>
+<div class="story-row">
+<img src="images/reddy/90.jpg">
+<p>❤️ Friends forever</p>
+<h6>Reddy  bro nuv ichina first gift naku birthday ki ichina shirt still nenu jagratha ga dachukunna 😄❤️</h6>
+</div>
+</div>
+
+
+<div class="card mt-4 p-4 text-center">
+
+<h3>🎂 Special Message</h3>
+
+<p>
+Friendship is not about time ❤️  
+It is about memories and trust 😄
+</p>
+<button class="btn btn-secondary mb-3" onclick="goBack()">⬅ Back</button>
+</div>
+
+</div>
+
+<!-- REDDY PASSWORD -->
+<div id="reddyPasswordPage" class="container hidden">
+<button class="btn btn-secondary mb-3" onclick="goBack()">⬅ Back</button>
+<div class="card shadow p-4 mx-auto" style="max-width:600px;">
+      <input type="password" id="reddyPass" placeholder="Mbl password enter chey bro">
+    <br><br>
+    <button id="nextBtn" onclick="checkReddyPassword()">Open</button>
+  </div>
+</div>
+
+
+<!-- REDDY STORY PAGE -->
+<div id="reddyPage" class="container hidden">
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2 class="mt-3 text-center">❤️ Happy Birthday Reddy bro ❤️</h2>
+
+<!-- BIRTHDAY MESSAGE -->
+<div class="card mt-4 p-4">
+<!--<h3>🎂 Birthday Message</h3>-->
+<p>
+ 
+You are very special in our life bro 🎉
+</p>
+</div>
+
+<!-- MEMORIES -->
+<div class="card mt-4 p-3">
+
+<h3>🖼 Memories & Story</h3>
+
+<div class="story-row">
+<img src="images/reddy/1.jpg">
+<p>First beautiful memory ❤️</p>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/201.jpg">
+<p>Fun moments together 🎉</p>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/213.jpg">
+<p>Bond forever 🤝❤️</p>
+</div>
+
+</div>
+
+<!-- LETTERS -->
+<div class="card mt-4 p-3">
+
+<img src="images/reddy/202.jpg">
+<img src="images/reddy/203.jpg">
+<img src="images/reddy/87.jpg">
+<h3>💌 Letters From Reddy Bro</h3>
+
+<p>
+You are best bro forever ❤️  
+Stay happy always 🎂
+</p>
+
+</div>
+<div class="letter-box">
+
+ 
+<img src="images/reddy/87.jpg" class="memory-overlay">
+
+  <p id="letterText">
+  <div class="letter-box">
+    <h4>Reddy Bro</h4>
+  <p id="letterText">
+    
+bro e letter nuv chaduvthav ani expect chestunnna nuv enduku appudu la natho matladam ledhu id na first doubt bro
+nenu message chesina chusi vadilestunnav calls kuda..
+Konni saarlu reply raani silence kuda chala maatladuthundi...
+
+Manam evarikaina message chesthe reply kosam matrame kaadhu...
+
+Mana message chadivina tarvatha mana gurinchi oka nimisham alochisthara ani.
+
+“Nuv Busy unnavemo” ani Nenu  wait chestanu...
+“tharuvatha reply istav emo” ani...
+
+Kaani konni saarlu reply raani silence na midha nake doubt vastundi nene force full ga friendship cheymantunnana ani...
+
+nenu eppudu pedda expectations petukonu bro...
+edo week lo okkasari aina friends matladali anukunta 
+
+“Hi..Bro ?” ani simple  oka message
+“Jagratha ga undu bro ” ani cheppe oka mata.
+
+Avi chinna words laga kanipinchina...
+naku m matram chala pedda happiness istayi bro.
+
+
+Bro NUV feel avuthav ani em cheppalekapothunna kani  naku okkosari anipistundi nadhi antha one side friendship ani 
+Enduku ante naku mitho matladali ani unna miru call lift cheyyaru  ade miru naku call cheste nenu lift cheyyali 
+
+Bro Edina pani  unte ne call chese situation ki vaste na drustilo adi friendship kadhu bro miru em anna anukondi 
+
+im waiting  my mca reddy bro ni malli chusta ani present nuv vere ni friends vere ni prioritys he vere..
+idi chadivi nannu thittukoku bro em rasanu kuda telidhu edo rasa anthe miss u bro .......
+— Rock ❤️
+  </p>
+</div>
+  </p>
+
+</div>
+<!-- VIDEOS -->
+<div class="card mt-4 p-3">
+
+<h3>🎥 Videos Memories</h3>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/50.mp4">
+</video>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/38.mp4">
+</video>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/48.mp4">
+</video>
+</div>
+
+<!-- REELS -->
+<div class="card mt-4 p-3">
+
+<h3>📱 Reels</h3>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/42.mp4">
+</video>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/39.mp4">
+</video>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/44.mp4">
+</video>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/46.mp4">
+</video>
+</div>
+
+<!-- FINAL MESSAGE -->
+<div class="card mt-4 p-4 text-center">
+
+<h2 id="finalMessage"></h2>
+<button class="btn btn-secondary mb-3" onclick="goBack()">⬅ Back</button>
+</div>
+
+</div>
+<!-- BINDU -->
+<div id="binduPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2 class="mt-3 text-center">❤️ Bindu Bro ❤️</h2>
+
+
+
+
+<!-- MEMORIES -->
+<div class="card mt-4 p-3">
+
+<h3>🖼 Memories & Story</h3>
+
+<div class="story-row">
+<img src="images/reddy/206.jpg">
+<p>First beautiful memory ❤️</p>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/212.jpg">
+<p>Fun moments together 🎉</p>
+</div>
+
+<div class="story-row">
+<img src="images/reddy/204.jpg">
+<p>Bond forever 🤝❤️</p>
+</div>
+
+</div>
+
+<div class="letter-box">
+
+  <img src="images/reddy/87.jpg" class="memory-overlay">
+
+  <p id="letterText">
+  <div class="letter-box">
+<div class="letter-box">
+
+  <img src="images/reddy/212.jpg" class="memory-overlay">
+
+  <p id="letterText">
+  <div class="letter-box">
+    <h4>Bindu </h4>
+  <p id="letterText">
+    
+ hii bro ela unnav life lo chala busy aipoyav bro assalu message kuda reply ivvatledhu naku telusu  nuv 
+busy le intilo pani clg malli mi pillalu but appudappudu aina call chey bro bayata ante eppudo kalustam telidhu asalu mca 
+
+Bro edo page create cheyyali ani chesa edo raddam ani rastunna
+na life lo chala mandi friends unnaru  but nuv koncham special bro blood relation lekapoina ur like my sister.
+ .......
+— Rock ❤️
+  </p>
+</div>
+  </p>
+</div>
+</div>
+</div>
+<!-- VIDEOS -->
+<div class="card mt-4 p-3">
+
+<h3>🎥 Videos Memories</h3>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/207.mp4">
+</video>
+
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/208.mp4">
+</video>
+<video class="birthday-video" controls width="100%">
+<source src="images/reddy/209.mp4">
+</video>
+</div>
+
+
+
+
+<div class="card mt-4 p-4 text-center">
+
+<h2 id="finalMessage"></h2>
+<button class="btn btn-secondary mb-3" onclick="goBack()">⬅ Back</button>
+</div>
+
+</div>
+
+<!-- ME -->
+<div id="mePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <p>This is My section 🙋‍♂️</p>
+  </div>
+</div>
+
+<!-- QUESTIONS -->
+<div id="questionsPage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+  <div class="card">
+    <h3 id="questionTitle"></h3>
+    <p id="questionText"></p>
+
+    <input type="text" id="answerInput" placeholder="Type your answer..." required>
+    <br><br>
+
+    <button id="nextBtn" onclick="nextQuestion()">Next</button>
+    <button id="surpriseBtn" class="hidden" onclick="showGiftOptions()">🎁 Surprise Gift</button>
+
+    <!-- Gift Options INSIDE card -->
+    <div id="giftOptions" class="hidden" style="margin-top:20px;">
+      <h4>Select your gift bro🎁</h4>
+
+      <label>
+        <input type="radio" name="gift" value="Dress 👗 ">
+       👜
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="gift" value="Watch ⌚">
+        👗
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="gift" value="hand bag 👜">
+        ⌚
+      </label><br><br>
+
+      <button onclick="submitGift()">Reveal Gift 🔥</button>
+
+      <button onclick="goBack()">Back</button>
+    </div>
+
+  </div>
+  
+</div>
+<!-- GIFT -->
+<div id="giftPage" class="container hidden">
+  <h2>🎁 Final Surprise</h2>
+  <div class="card">
+    <p>Happy Birthday Reddy Bro 🎂🔥</p>
+  </div>
+  <button onclick="goBack()">Back</button>
+</div>
+
+<!-- RESPONSE PAGE -->
+<div id="responsePage" class="container hidden">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <div class="card">
+    <h3>All Answers 🔥</h3>
+    <div id="answersList"></div>
+  </div>
+<button onclick="sendData()">Submit</button>
+</div>
+
+<div class="response-icon" id="responseIcon" onclick="openResponsePassword()">R</div>
+
+
+
+<script>
+// ================= LOGIN =================
+
+function checkPassword(){
+  if(document.getElementById("password").value !== "."){
+    animateName();
+    startFireworks();
+    document.getElementById("bgMusic").play();
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("menu").classList.remove("hidden");
+    document.getElementById("responseIcon").style.display="flex";
+  } else {
+    alert("Wrong Number");
+  }
+}
+
+function hideAll(){
+  document.querySelectorAll(".container")
+    .forEach(el => el.classList.add("hidden"));
+}
+
+// ================= QUESTIONS =================
+
+let giftRevealed = false;
+
+const questions = [
+  { title: "Question 1 💖", text: "Bro eppudu aina naku nitho matladali ante direct call cheyacha...!" },
+  { title: "Question 2 😍", text: "Bro inni years friendship lo na valla hurt aina day Edina undha like viditho friendship cheyyadam waste ani feel aina roju ....?" },
+  { title: "Question 3 🥰", text: "Bro na friendship ni eppudu aina break cheyyali ani anipinchindi haa...?" },
+  { title: "Question 4 🎂", text: "Bro niku unna friendship lo atleast top 10 lo aina unnana...?" },
+  { title: "Question 5 🎉", text: "Bro nalo niku nachanivi enti cheppu and nachevi kuda cheppu...?" }
+];
+
+let currentQuestion = 0;
+let answers = [];
+
+function openQuestions(){
+  hideAll();
+  document.getElementById("questionsPage").classList.remove("hidden");
+
+  currentQuestion = 0;
+  answers = [];
+  giftRevealed = false;
+
+  document.getElementById("nextBtn").classList.remove("hidden");
+  document.getElementById("surpriseBtn").classList.add("hidden");
+  document.getElementById("answerInput").classList.remove("hidden");
+
+  showQuestion();
+}
+
+function showQuestion(){
+  document.getElementById("questionTitle").innerText =
+    questions[currentQuestion].title;
+
+  document.getElementById("questionText").innerText =
+    questions[currentQuestion].text;
+
+  document.getElementById("answerInput").value = "";
+}
+
+function nextQuestion(){
+
+  let answerValue =
+    document.getElementById("answerInput").value.trim();
+
+  if(answerValue === ""){
+    alert("Answer compulsory bro 😄");
+    return;
+  }
+
+  answers.push(answerValue);
+  currentQuestion++;
+
+  if(currentQuestion < questions.length){
+    showQuestion();
+  } else {
+
+    document.getElementById("questionTitle").innerText =
+      "All Done 😄";
+
+    document.getElementById("questionText").innerText =
+      "Click below for your surprise 🎁";
+
+    document.getElementById("answerInput").classList.add("hidden");
+    document.getElementById("nextBtn").classList.add("hidden");
+    document.getElementById("surpriseBtn").classList.remove("hidden");
+  }
+}
+
+// ================= SURPRISE =================
+
+function showGiftOptions(){
+  document.getElementById("giftOptions").classList.remove("hidden");
+  document.getElementById("surpriseBtn").classList.add("hidden");
+}
+
+function submitGift(){
+
+  if(giftRevealed){
+    alert("Gift already revealed 😄");
+    return;
+  }
+
+  let selected =
+    document.querySelector('input[name="gift"]:checked');
+
+  if(!selected){
+    alert("Select one gift first 😄");
+    return;
+  }
+
+  giftRevealed = true;
+
+  let giftValue = selected.value;
+
+  let finalData = {
+    answers: answers,
+    gift: giftValue,
+    date: new Date().toLocaleString()
+  };
+
+  localStorage.setItem(
+    "birthdayResponse",
+    JSON.stringify(finalData)
+  );
+
+  document.getElementById("questionTitle").innerText =
+    "🎉 SURPRISE REVEALED!";
+
+  document.getElementById("questionText").innerHTML =
+"<h3 class='gift-pop'>Your Gift: " + giftValue + " 🎁</h3>";
+
+flashScreen();
+startFireworks();
+  document.querySelectorAll('input[name="gift"]')
+    .forEach(r => r.disabled = true);
+
+  sendData(); // send to Google Sheet
+}
+
+// ================= GOOGLE SHEET =================
+
+function sendData(){
+
+  let savedData =
+    JSON.parse(localStorage.getItem("birthdayResponse"));
+
+  if(!savedData) return;
+
+  fetch("https://script.google.com/macros/s/AKfycbzpPWE2kdd9Kgmx2I5Vhu3is451UQsPYdypjB1yIE1yHcfhh8Rq231u2KdhJWqcXW6h8g/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(savedData)
+  });
+
+  console.log("Data sent to Google Sheet");
+}
+
+// ================= RESPONSE PAGE =================
+
+function openResponsePassword(){
+
+  let pass = prompt("Enter Response Password");
+
+  if(pass === "1111"){
+
+    hideAll();
+    document.getElementById("responsePage")
+      .classList.remove("hidden");
+
+    let list =
+      document.getElementById("answersList");
+
+    list.innerHTML = "";
+
+    let savedData =
+      JSON.parse(localStorage.getItem("birthdayResponse"));
+
+    if(!savedData){
+      list.innerHTML =
+        "<p>No answers submitted yet 😄</p>";
+    } else {
+
+      for(let i=0;i<savedData.answers.length;i++){
+        list.innerHTML +=
+          "<p><b>Q"+(i+1)+":</b> "
+          + savedData.answers[i] + "</p>";
+      }
+
+      list.innerHTML +=
+        "<hr><p><b>Selected Gift:</b> "
+        + savedData.gift + " 🎁</p>";
+
+      list.innerHTML +=
+        "<p><b>Date:</b> "
+        + savedData.date + "</p>";
+    }
+
+  } else {
+    alert("Wrong Password");
+  }
+}
+
+// ================= BACK =================
+
+function goBack(){
+  hideAll();
+  document.getElementById("menu")
+    .classList.remove("hidden");
+}
+   // ================= MENU FUNCTIONS =================
+
+
+function toggleMonkeys(){
+  document.getElementById("monkeyOptions")
+    .classList.toggle("hidden");
+}
+function openReddyStory(){
+  hideAll();
+  document.getElementById("reddyPage")
+    .classList.remove("hidden");
+
+  startReddyTypewriter();
+  startReddySlideshow();
+}
+function openReddyPassword(){
+  hideAll();
+  document.getElementById("reddyPasswordPage")
+    .classList.remove("hidden");
+}
+
+function checkReddyPassword(){
+
+  let enteredPass = document.getElementById("reddyPass").value;
+
+  if(enteredPass === "57"){   // your password
+
+    document.getElementById("reddyPass").value = "";
+
+    hideAll();  // all pages hide
+     showFinalMessage();
+    document.getElementById("reddyPasswordPage")
+      .classList.add("hidden");
+
+    document.getElementById("reddyPage")
+      .classList.remove("hidden");
+
+  } else {
+    alert("Wrong Password 😄");
+  }
+}
+function openBindu(){
+  hideAll();
+  document.getElementById("binduPage")
+    .classList.remove("hidden");
+}
+
+function openMe(){
+  hideAll();
+  document.getElementById("mePage")
+    .classList.remove("hidden");
+}    
+
+
+// ================= REDDY MODULE ONLY =================
+
+// When Reddy page opens
+function openStory(){
+  hideAll();
+  document.getElementById("reddyPage")
+    .classList.remove("hidden");
+
+  startReddyTypewriter();
+  startReddySlideshow();
+}
+
+
+
+
+// SLIDESHOW
+let reddyImages = [
+  "images/reddy/1.jpg",
+  "images/reddy/2.jpg",
+  "images/reddy/3.jpg"
+];
+
+let slideIndex = 0;
+
+function startReddySlideshow(){
+
+  setInterval(function(){
+
+    slideIndex++;
+
+    if(slideIndex >= reddyImages.length){
+      slideIndex = 0;
+    }
+
+    document.getElementById("reddySlide").src =
+      reddyImages[slideIndex];
+
+  }, 3000);
+}
+
+
+// SURPRISE
+function showReddySurprise(){
+  document.getElementById("reddySurpriseBox")
+    .classList.remove("hidden");
+}
+
+function openFriendshipStory(){
+  hideAll();
+  document.getElementById("storyPage")
+    .classList.remove("hidden");
+}
+// ================= REDDY LETTER TYPE EFFECT =================
+
+function startReddyLetter(){
+
+  let text =
+  "Dear Reddy bro ❤️\nYou are one of the best people in life.\nHappy birthday and stay blessed 🎂🎉";
+
+  let i = 0;
+
+  let box = document.getElementById("reddyLetterText");
+  box.innerHTML = "";
+
+  let typing = setInterval(function(){
+
+    if(i < text.length){
+      box.innerHTML += text.charAt(i);
+      i++;
+    }
+    else{
+      clearInterval(typing);
+    }
+
+  },40);
+}
+
+
+// ===== REDDY FLOATING MEMORY PHOTOS =====
+
+const memoryImages = [
+  "images/reddy/100.jpg",
+  "images/reddy/99.jpg",
+  "images/reddy/98.jpg",
+  "images/reddy/97.jpg",
+  "images/reddy/96.jpg",
+  "images/reddy/95.jpg",
+  "images/reddy/94.jpg",
+  "images/reddy/93.jpg",
+];
+
+setInterval(() => {
+
+  let img = document.createElement("img");
+
+  img.src = memoryImages[Math.floor(Math.random()*memoryImages.length)];
+
+  img.style.position = "fixed";
+  img.style.width = "40px";
+  img.style.height = "40px";
+  img.style.objectFit = "cover";
+  img.style.borderRadius = "50%";
+  img.style.left = Math.random()*100 + "vw";
+  img.style.top = "100vh";
+  img.style.opacity = "0.8";
+  img.style.transition = "6s linear";
+  img.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+
+  document.body.appendChild(img);
+
+  setTimeout(()=>{
+    img.style.top = "-10vh";
+  },200);
+
+  setTimeout(()=>{
+    img.remove();
+  },7000);
+
+},1500);
+function showReddyStep2(){
+ document.getElementById("reddyStep1").classList.add("hidden");
+ document.getElementById("reddyStep2").classList.remove("hidden");
+}
+
+function showReddyStep3(){
+ document.getElementById("reddyStep2").classList.add("hidden");
+ document.getElementById("reddyStep3").classList.remove("hidden");
+}
+
+function showReddyStep4(){
+ document.getElementById("reddyStep3").classList.add("hidden");
+ document.getElementById("reddyStep4").classList.remove("hidden");
+}
+
+function showReddyStep5(){
+ document.getElementById("reddyStep4").classList.add("hidden");
+ document.getElementById("reddyStep5").classList.remove("hidden");
+}
+
+function showReddyStep6(){
+ document.getElementById("reddyStep5").classList.add("hidden");
+ document.getElementById("reddyStep6").classList.remove("hidden");
+}
+function openFriendshipStory(){
+  hideAll();
+  document.getElementById("storyPage")
+  .classList.remove("hidden");
+}
+let musicPlaying = false;
+
+function toggleMusic(){
+
+  let music = document.getElementById("bgMusic");
+
+  if(musicPlaying){
+    music.pause();
+    musicPlaying = false;
+  }
+  else{
+    music.play();
+    musicPlaying = true;
+  }
+
+}
+document.addEventListener("DOMContentLoaded", function(){
+
+const bgMusic = document.getElementById("bgMusic");
+const videos = document.querySelectorAll(".birthday-video");
+
+videos.forEach(video => {
+
+video.addEventListener("play", function(){
+
+// stop music
+bgMusic.pause();
+
+// stop other videos
+videos.forEach(v => {
+if(v !== video){
+v.pause();
+}
+});
+
+});
+
+video.addEventListener("pause", function(){
+
+// if no video playing start music
+let isAnyVideoPlaying = false;
+
+videos.forEach(v=>{
+if(!v.paused){
+isAnyVideoPlaying = true;
+}
+});
+
+if(!isAnyVideoPlaying){
+bgMusic.play();
+}
+
+});
+
+video.addEventListener("ended", function(){
+bgMusic.play();
+});
+
+});
+
+});
+function startFireworks(){
+
+  for(let i=0;i<80;i++){
+
+    let confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random()*100 + "vw";
+    confetti.style.background =
+      "hsl(" + Math.random()*360 + ",100%,50%)";
+
+    confetti.style.animationDuration =
+      (Math.random()*2+1) + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(()=>{
+      confetti.remove();
+    },3000);
+
+  }
+
+}
+function flashScreen(){
+
+let flash=document.createElement("div");
+flash.classList.add("flash");
+
+document.body.appendChild(flash);
+
+setTimeout(()=>{
+flash.remove();
+},600);
+
+}
+
+function animateName(){
+  let name = "🎂 Happy Birthday Reddy 🎂";
+  let i = 0;
+  let box = document.getElementById("nameAnimation");
+  box.innerHTML = "";
+
+  let interval = setInterval(()=>{
+    if(i < name.length){
+      box.innerHTML += name.charAt(i);
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 80);
+}
+function showFinalMessage(){
+
+  let text = "❤️ Thank You For Everything ❤️\nYou are not just a friend... you are family 😄🔥";
+
+  let i = 0;
+  let box = document.getElementById("finalMessage");
+  box.innerHTML = "";
+
+  let typing = setInterval(()=>{
+    if(i < text.length){
+      box.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typing);
+      startFireworks();
+    }
+  },40);
+}
+</script>
+
+</body>
+</html>
