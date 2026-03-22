@@ -403,7 +403,7 @@ animation:popGift 0.7s ease;
 <!-- MENU -->
 <div id="menu" class="container hidden">
 <h2 class="hero-title" id="nameAnimation"></h2>
- <audio id="bgMusic" autoplay loop>
+ <audio id="bgMusic"  loop>
 <source src="1.mp3" type="audio/mp3">
 </audio>
 
@@ -762,11 +762,11 @@ idi chadivi nannu thittukoku bro em rasanu kuda telidhu edo rasa anthe miss u br
 
   <p id="letterText">
   <div class="letter-box">
-<div class="letter-box">
+
 
   <img src=96.jpg" class="memory-overlay">
 
-  <p id="letterText">
+ 
   <div class="letter-box">
     <h4>Bindu </h4>
   <p id="letterText">
@@ -780,9 +780,9 @@ na life lo chala mandi friends unnaru  but nuv koncham special bro blood relatio
 — Rock ❤️
   </p>
 </div>
-  </p>
+  
 </div>
-</div>
+
 </div>
 <!-- VIDEOS -->
 <div class="card mt-4 p-3">
@@ -888,18 +888,23 @@ na life lo chala mandi friends unnaru  but nuv koncham special bro blood relatio
 // ================= LOGIN =================
 
 function checkPassword(){
-  if(document.getElementById("password").value !== "."){
+
+  let pass = document.getElementById("password").value.trim();
+
+  if(pass !== "" && pass !== "."){
+
     animateName();
     startFireworks();
-    document.getElementById("bgMusic").play();
+    document.getElementById("bgMusic").play().catch(()=>{});
+
     document.getElementById("login").classList.add("hidden");
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("responseIcon").style.display="flex";
+
   } else {
-    alert("Wrong Number");
+    alert("Enter your lucky number bro 😄");
   }
 }
-
 function hideAll(){
   document.querySelectorAll(".container")
     .forEach(el => el.classList.add("hidden"));
