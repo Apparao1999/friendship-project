@@ -403,7 +403,7 @@ animation:popGift 0.7s ease;
 <!-- MENU -->
 <div id="menu" class="container hidden">
 <h2 class="hero-title" id="nameAnimation"></h2>
- <audio id="bgMusic" autoplay loop>
+ <audio id="bgMusic" loop>
 <source src="1.mp3" type="audio/mp3">
 </audio>
 
@@ -667,9 +667,11 @@ naku m matram chala pedda happiness istayi bro.
 Bro NUV feel avuthav ani em cheppalekapothunna kani  naku okkosari anipistundi nadhi antha one side friendship ani 
 Enduku ante naku mitho matladali ani unna miru call lift cheyyaru  ade miru naku call cheste nenu lift cheyyali 
 
-Bro Edina pani  unte ne call chese situation ki vaste na drustilo adi friendship kadhu bro miru em anna anukondi 
+Bro Edina pani  unte ne call chese situation ki vaste asalu nenu eppatiki call cheyyanu ..
+    and na drustilo adiasaalu  friendship he  kadhu bro miru em anna anukondi ...
 
-im waiting  my mca reddy bro ni malli chusta ani present nuv vere ni friends vere ni prioritys he vere..
+im waiting  my mca reddy bro ni malli chusta ani present nuv vere ni friends vere ni prioritys he vere
+    asalu a list lone nenu lenu anukuntunna..
 idi chadivi nannu thittukoku bro em rasanu kuda telidhu edo rasa anthe miss u bro .......
 — Rock ❤️
   </p>
@@ -769,12 +771,12 @@ idi chadivi nannu thittukoku bro em rasanu kuda telidhu edo rasa anthe miss u br
     <h4>Bindu </h4>
   <p id="letterText">
     
- hii bro ela unnav life lo chala busy aipoyav bro assalu message kuda reply ivvatledhu naku telusu  nuv 
-busy le intilo pani clg malli mi pillalu but appudappudu aina call chey bro bayata ante eppudo kalustam telidhu asalu mca 
+ hii bro ela unnav life lo chala busy aipoyav bro assalu message kuda reply ivvatledhu naku telusu  nuv chala
+busy le intilo pani clg malli mi pillalu but appudappudu aina call chey bro bayata ante eppudo kalustam telidhu asalu, 
 
 Bro edo page create cheyyali ani chesa edo raddam ani rastunna
 na life lo chala mandi friends unnaru  but nuv koncham special bro blood relation lekapoina ur like my sister.
- .......
+
 — Rock ❤️
   </p>
 </div>
@@ -886,15 +888,21 @@ na life lo chala mandi friends unnaru  but nuv koncham special bro blood relatio
 // ================= LOGIN =================
 
 function checkPassword(){
-  if(document.getElementById("password").value !== "."){
+
+  let pass = document.getElementById("password").value.trim();
+
+  if(pass !== "" && pass !== "."){
+
     animateName();
     startFireworks();
-    document.getElementById("bgMusic").play();
+    document.getElementById("bgMusic").play().catch(()=>{});
+
     document.getElementById("login").classList.add("hidden");
     document.getElementById("menu").classList.remove("hidden");
     document.getElementById("responseIcon").style.display="flex";
+
   } else {
-    alert("Wrong Number");
+    alert("Enter your lucky number bro 😄");
   }
 }
 
@@ -1121,7 +1129,7 @@ function checkReddyPassword(){
 
   let enteredPass = document.getElementById("reddyPass").value;
 
-  if(enteredPass === "57"){   // your password
+  if(enteredPass === "575757"){   // your password
 
     document.getElementById("reddyPass").value = "";
 
