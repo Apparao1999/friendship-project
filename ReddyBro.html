@@ -340,19 +340,22 @@ animation:popGift 0.7s ease;
 /* LETTER BOX */
 .letter-box{
   position: relative;
-  background: url('paper.jpg');
+  background-image: url('paper.jpg');  /* ✅ use this */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;        /* 🔥 ADD THIS */
+
   padding: 30px;
   border-radius: 10px;
   width: 95%;
   margin: 20px auto;
+  min-height: 300px;                  /* 🔥 ADD THIS */
+
   box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 
   /* vintage look */
   filter: sepia(40%) contrast(95%) brightness(95%);
 }
-
 /* Burn edge effect */
 .letter-box::before{
   content:"";
@@ -634,7 +637,7 @@ Stay happy always 🎂
 <div class="letter-box">
 
  
-<img src="87.jpg" class="memory-overlay">
+<img src="96.jpg" class="memory-overlay">
 
   <p id="letterText">
   <div class="letter-box">
